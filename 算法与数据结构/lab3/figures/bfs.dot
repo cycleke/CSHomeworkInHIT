@@ -1,0 +1,31 @@
+digraph {
+  subgraph body{
+    label="body";
+    init[label="clear visited mark"];
+    loop1[label="for node unvisited"];
+    func[label="call function dfs"];
+
+    init -> loop1 -> func;
+  };
+
+  subgraph bfs {
+    label="bfs";
+    markroot[label="mark root visited"];
+    pushroot[label="push root into queue"];
+    empty[label="is queue empty"];
+    front[label="get front of queue"];
+    loop2[label="for node unvisited and\nconnected with current node"];
+    marknode[label="mark new node visited"];
+    pushnode[label="push node into queue"];
+
+    markroot -> pushroot -> empty;
+    empty -> front[label="Yes"];
+    front -> loop2 -> marknode -> pushnode -> loop2;
+    loop2 -> empty[label="loop end"];
+
+  };
+
+  edge[constraint=false];
+  func -> markroot[style=dotted];
+
+}

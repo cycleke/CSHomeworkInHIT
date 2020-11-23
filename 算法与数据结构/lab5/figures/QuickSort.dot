@@ -1,0 +1,25 @@
+digraph {
+  empty[label="return if empty segment"];
+  init[label="key = *begin\nptr i = begin - 1, j = begin"];
+  cond[label="j + 1 <= end"];
+  iter[label="inc j"];
+  judge[label="*j < key"];
+  swap1[label="inc i\nswap(*i, *j)"];
+  swap2[label="inc i\nswap(*i, *end)"];
+  {
+    rank=max;
+    left[label="sort the left part\n(begin, i - 1)"];
+    right[label="sort the right part\n(i + 1, end)"];
+  }
+
+  empty -> init -> cond;
+  cond -> judge[label="Yes"];
+  cond -> swap2[label="No"];
+  iter -> cond;
+  judge -> swap1[label="Yes"];
+  judge -> iter[label="No"];
+  swap1 -> iter;
+
+  swap2 -> left;
+  swap2 -> right;
+}

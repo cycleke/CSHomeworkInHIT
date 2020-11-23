@@ -1,0 +1,27 @@
+digraph {
+  node[shape = box];
+  start[label="开始", rank=min, shape=ellipse];
+  input[label="传入参数 lineString, file, line, key", shape=parallelogram];
+  splitKeyValue[label="解析出标签和值两个部分"];
+  splitValues[label="解析出值序列"];
+  checkSplitKeyValue[label="判断解析是否成功", shape=diamond];
+  throwFileParseException[label="抛出 FileParseException"];
+  checkKey[label="判断标签是否正确", shape=diamond];
+  checkCase[label="判断标签是否是因为大小写错误", shape=diamond];
+  checkNoValue[label="判断值序列是否为空", shape=diamond];
+  throwValueNotFoundException[label="抛出 ValueNotFoundException"];
+  throwCaseNotMatchException[label="抛出 CaseNotMatchException"];
+  throwMismatchedKeyException[label="抛出 MismatchedKeyException"];
+  returnValues[label="返回值序列", shape=ellipse];
+
+  start -> input -> splitKeyValue -> checkSplitKeyValue;
+  checkSplitKeyValue -> throwFileParseException[label="No"];
+  checkSplitKeyValue -> checkKey[label="Yes"];
+  checkKey -> checkCase[label="No"];
+  checkKey -> splitValues[label="Yes"];
+  checkCase -> throwCaseNotMatchException[label="Yes"];
+  checkCase -> throwMismatchedKeyException[label="No"];
+  splitValues -> checkNoValue;
+  checkNoValue -> throwValueNotFoundException[label="Yes"];
+  checkNoValue -> returnValues[label="No"];
+}

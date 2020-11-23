@@ -1,0 +1,527 @@
+% !Tex Program = xelatex
+% -*-coding: utf-8 -*-
+\documentclass[12pt,onecolumn]{article}
+
+% 中文
+\usepackage[BoldFont,SlantFont]{xeCJK}
+\xeCJKsetemboldenfactor{1}%只对随后定义的CJK字体有效
+\setCJKfamilyfont{hei}{SimHei}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{song}{SimSun}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{fs}{FangSong}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{li}{LiSu}
+\setCJKfamilyfont{xw}{STXinwei}
+\setCJKmainfont{SimSun}
+
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows 自带simsun.ttf)
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows 自带simfs.ttf)
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows 自带simkai.ttf)
+\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
+\newcommand{\xw}{\CJKfamily{xw}}        % 隶书   (Windows自带simli.ttf)
+
+% \AmSTeX\ 宏包，用来排出更加漂亮的公式。
+\usepackage{amsmath}
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{amssymb}
+% 添加字体
+\usepackage[defaultsups]{newtxtext}
+\usepackage{newtxmath}
+\usepackage{courier}
+% 图形支持宏包
+\usepackage{graphicx}
+% 插入pdf
+\usepackage{pdfpages}
+\includepdfset{fitpaper=true}
+% 更好的列表环境。
+\usepackage{enumitem}       %使用enumitem宏包,改变列表项的格式
+\usepackage{enumerate}
+\usepackage{environ}
+% 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
+\usepackage[bottom,perpage,hang]{footmisc}
+\raggedbottom
+% 脚注格式。
+\usepackage{pifont}
+% 表格控制
+\usepackage{longtable}
+\usepackage{booktabs}
+% 参考文献引用宏包
+\usepackage[sort&compress]{natbib}
+% 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
+\usepackage{hyperref}
+\hypersetup{
+  CJKbookmarks=true,
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=false,
+  plainpages=false,
+  pdfborder=0 0 0}
+% 设置 url 样式，与上下文一致
+\urlstyle{same}
+% 版芯设置
+\usepackage{geometry}
+\geometry{
+  centering,
+  text={150true mm,236true mm},
+  left=30true mm,
+  head=5true mm,
+  headsep=2true mm,
+  footskip=0true mm,
+  foot=5.2true mm
+}
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+\usepackage{fancyhdr}
+% 其他包，表格、数学符号包
+\usepackage{tabularx}
+\usepackage{varwidth}
+% 此处changepage环境用来控制索引页面的左右边距，规范中给出的示例的边距要大于正文。
+\usepackage{changepage}
+% 多栏结构在文中用begin{multicols}{2}end{multicols}
+\usepackage{multicol,multienum}
+% 允许上一个section的浮动图形出现在下一个section的开始部分,还提供\FloatBarrier命
+% 令,使所有未处理的浮动图形立即被处理
+\usepackage[below]{placeins}
+% 支持子图 %centerlast 设置最后一行是否居中
+\usepackage{subfigure}
+% 支持双语标题
+\usepackage[subfigure]{ccaption}
+% 根据我工规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
+\renewcommand\normalsize{%
+  % \@setfontsize\normalsize{12bp}{\ifhit@glue 20.50398bp \@plus 2.83465bp \@minus 0bp\else 20.50398bp\fi}%
+  \abovedisplayskip=8pt
+  \abovedisplayshortskip=8pt
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip}
+% 根据习惯定义字号。用法：\cs{hit@def@fontsize}\marg{字号名称}\marg{磅数}避免了
+% 字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+\def\hit@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+\hit@def@fontsize{dachu}{58bp}
+\hit@def@fontsize{chuhao}{42bp}
+\hit@def@fontsize{xiaochu}{36bp}
+\hit@def@fontsize{yihao}{26bp}
+\hit@def@fontsize{xiaoyi}{24bp}
+\hit@def@fontsize{erhao}{22bp}
+\hit@def@fontsize{xiaoer}{18bp}
+\hit@def@fontsize{sanhao}{16bp}
+\hit@def@fontsize{xiaosan}{15bp}
+\hit@def@fontsize{sihao}{14bp}
+\hit@def@fontsize{banxiaosi}{13bp}
+\hit@def@fontsize{xiaosi}{12bp}
+\hit@def@fontsize{dawu}{11bp}
+\hit@def@fontsize{wuhao}{10.5bp}
+\hit@def@fontsize{xiaowu}{9bp}
+\hit@def@fontsize{liuhao}{7.5bp}
+\hit@def@fontsize{xiaoliu}{6.5bp}
+\hit@def@fontsize{qihao}{5.5bp}
+\hit@def@fontsize{bahao}{5bp}
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+\setlist{nosep}
+% 允许太长的公式断行、分页等。
+\allowdisplaybreaks[4]
+\predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
+\postdisplaypenalty=0
+% 公式编号设置
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\hei}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem*{proof}{证明}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theoremseparator{}
+\newtheorem{assumption}{假设}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{exercise}{练习}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{remark}{注释}[section]
+\newtheorem{problem}{问题}[section]
+\newtheorem{conjecture}{猜想}[section]
+% 各种单位
+\usepackage{siunitx}
+\sisetup{group-minimum-digits=4, group-separator= \hspace{0.25em}}
+\sisetup{detect-weight,detect-mode,detect-family}
+% 处理数学公式中的黑斜体的宏包
+\usepackage{bm}
+% 不同于 \mathcal \mathfrak 之类的英文花体字体
+\usepackage{mathrsfs}
+% 支持彩色
+\usepackage{xcolor}
+\definecolor{colorzero}{rgb}{0, 0, 0}
+\definecolor{colorone}{rgb}{1, 0, 0}
+\definecolor{colortwo}{rgb}{0, 0, 1}
+\definecolor{colorthree}{rgb}{0, 1, 0}
+% 图形和表格的控制旋转
+\usepackage{rotating}
+% 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
+% 生成算法列表。
+\usepackage[algoruled,linesnumbered]{algorithm2e}
+% 排版源码所使用的环境。
+\usepackage{listings}
+\lstset{
+  breaklines  = true,
+  captionpos  = b,
+  tabsize     = 2,
+  numbers     = left,
+  columns     = flexible,
+  keepspaces  = true,
+  % commentstyle = \color[RGB]{0,128,0},
+  % keywordstyle = \color[RGB]{0,0,255},
+  basicstyle   = \small\ttfamily,
+  rulesepcolor = \color{red!20!green!20!blue!20},
+  showstringspaces = false,
+}
+
+% 作图
+\usepackage{tikz}
+
+% 首行缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage{float}
+\usepackage{diagbox}
+
+% 最后定义一些常见的数学公式样式。
+\newcommand{\theVector}[1]{\bm{#1}}
+\newcommand{\theMatrix}[1]{\mathbb{#1}}
+\newcommand{\theSet}[1]{\mathcal{#1}}
+\newcommand{\theDirected}[1]{{\overrightarrow{#1}}}
+\newcommand{\theUndirected}[1]{{\overline{#1}}}
+\newcommand{\theNetwork}[1]{\mathscr{#1}}
+\newcommand{\theNode}[1]{{\text{#1}}}
+\newcommand{\theDirectedEdge}[2]{{\overrightarrow{{#1}{#2}}}}
+\newcommand{\theUndirectedEdge}[2]{{\overline{{#1}{#2}}}}
+
+\graphicspath{{figures/}}
+
+\pagestyle{fancy}
+\fancyhead[L]{\song\xiaowu[0]{哈尔滨工业大学}}
+\fancyhead[R]{\song\xiaowu[0]{近世代数}}
+\fancyfoot[C]{\xiaowu-~\thepage~-}
+
+% \renewcommand{\thesection}{}
+% \renewcommand{\thesubsection}{}
+\renewcommand{\today}{\number\year{年}\number\month{月}\number\day{日}}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+\title{近世代数作业七}
+\author{cycleke}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{课后习题}
+
+\subsection{第一题}
+\begin{proof*}
+  不妨设$G = \{e_1, a, a^2, \ldots, a^{m - 1}\}, \bar{G} = \{e_2, b, b^2, \ldots, a^{n - 1}\}$。
+
+  先证$\Rightarrow$。若$G \sim \bar{G}$，不妨设同态为$\varphi$。则$G/Ker\varphi \cong \bar{G}$，所以$|G/Ker\varphi| = |\bar{G}| = n$。
+  而$ G/Ker\varphi \leq G$，所以$|G/Ker\varphi| \bigm| |G|$，即$n \bigm| m$。
+
+  再证$\Leftarrow$。若$n \bigm| m$，构造函数$\varphi:G \to \bar{G}, \forall a^p \in G, 0 \leq p < m, \varphi(a^p) = b^{q}, p \equiv q(\bmod\;n)$。
+  $\forall a^p, a^q \in G, 0 \leq p, q < m, \varphi(a^p \circ a^q) = \varphi(a^{p + q}) = b^s, s \equiv p + q (\bmod\;n)$
+  又有$ \varphi(a^p) * \varphi(a^q) = b^{s_1} * b^{s_2} = b^{s_1 + s_2}$，因为
+  \begin{gather*}
+    s_1 \equiv p (\bmod\;n) \\
+    s_2 \equiv q (\bmod\;n) \\
+    s_1 + s_2 \equiv p + q(\bmod\;n) \\
+    \therefore s_1 + s_2 \equiv s(\bmod\;n) \\
+    b^{s_1 + s_2} = b^s
+  \end{gather*}
+  所以$\varphi$是一个$G$到$\bar{G}$的同态。由于$n \bigm| m$，可知$n \leq m, \forall b^k \in \bar{G}, \varphi(a^k) = b^k$。
+  所以$\varphi$是一个满射，$G \sim \bar{G}$。
+
+  综上所述，命题得证。
+\end{proof*}
+
+\subsection{第二题}
+\begin{proof*}
+  不妨设$G = \{e, a, a^2, \ldots, a^{n - 1}\}, H = \{e, a^k, a^{2k}, \ldots, a^{n - k}\}$。
+  则$|H| \bigm| |G|$，由第一题结论有$G \sim H$，设其同态为$\varphi:G \to \bar{G}, \forall a^p \in G, 0 \leq p < m, \varphi(a^p) = b^{q}, p \equiv q(\bmod\;n)$。
+  则$Ker\varphi = \{a^{ik}\} = H$，所以$G \cong G / H$。由于$G$为循环群，所以$G / H$也是循环群。
+\end{proof*}
+
+\subsection{第三题}
+1.构造函数$\varphi:G \to S_4, \bar{G} = \{\bar{e}, \bar{x}, \bar{y}, \bar{z}\}$，其中
+\begin{align*}
+  \bar{e} = \varphi(e) & = (1)        \\
+  \bar{x} = \varphi(x) & = (1 2)(3 4) \\
+  \bar{y} = \varphi(y) & = (1 3)(2 4) \\
+  \bar{z} = \varphi(z) & = (1 4)(2 3)
+\end{align*}
+
+设$\bullet$为置换的合成，则可以得到表1
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|cccc}
+    \toprule
+    $\bullet$ & $\bar{e}$ & $\bar{x}$ & $\bar{y}$ & $\bar{z}$ \\
+    \midrule
+    $\bar{e}$ & $\bar{e}$ & $\bar{x}$ & $\bar{y}$ & $\bar{z}$ \\
+    \midrule
+    $\bar{x}$ & $\bar{x}$ & $\bar{e}$ & $\bar{z}$ & $\bar{y}$ \\
+    \midrule
+    $\bar{y}$ & $\bar{y}$ & $\bar{z}$ & $\bar{e}$ & $\bar{x}$ \\
+    \midrule
+    $\bar{z}$ & $\bar{z}$ & $\bar{y}$ & $\bar{x}$ & $\bar{e}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{$(\bar{G}, \bullet)$的乘法表}
+\end{table}
+
+观察两者的乘法表不难发现，$(G, \circ, e)$与$(\bar{G}, \bullet, \bar{e})$同构。
+
+2.首先证明$(G_1, *)$为一个群。
+\begin{proof*}
+  显然$*$具备封闭性和交换律，且$\forall x \in G_1, e_1 * x = x, x * x = e_1$，
+  即$e_1$为幺元，每个元素的逆元为其自身，只需证明$*$具有结合律。
+
+  $\forall x, y \in G_1$
+  \begin{gather*}
+    x * (y * e) = x * y = (x * y) * e \\
+    x * (e * y) = x * y = (x * e) * y \\
+    e * (x * y) = x * y = (e * x) * y
+  \end{gather*}
+  而$a * (a * a) = a = (a * a) * a$，所以$*$具有结合律，所以$(G_1, *, e_1)$为一个群。
+\end{proof*}
+再证明$\varphi$为一个同态。
+\begin{proof*}
+  通过枚举有表2和表3
+  \begin{table}[h]
+    \begin{minipage}{0.48\linewidth}
+      \centering
+      \begin{tabular}{lcccc}
+        \toprule
+        \diagbox{p}{q} & e     & x     & y     & z     \\
+        \midrule
+        e              & $e_1$ & $e_1$ & a     & a     \\
+        \midrule
+        x              & $e_1$ & $e_1$ & a     & a     \\
+        \midrule
+        y              & a     & a     & $e_1$ & $e_1$ \\
+        \midrule
+        z              & a     & a     & $e_1$ & $e_1$ \\
+        \bottomrule
+      \end{tabular}
+      \caption{$\varphi(p \circ q)$的值}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+      \centering
+      \begin{tabular}{lcccc}
+        \toprule
+        \diagbox{p}{q} & e     & x     & y     & z     \\
+        \midrule
+        e              & $e_1$ & $e_1$ & a     & a     \\
+        \midrule
+        x              & $e_1$ & $e_1$ & a     & a     \\
+        \midrule
+        y              & a     & a     & $e_1$ & $e_1$ \\
+        \midrule
+        z              & a     & a     & $e_1$ & $e_1$ \\
+        \bottomrule
+      \end{tabular}
+      \caption{$\varphi(p)*\varphi(q)$的值}
+    \end{minipage}
+  \end{table}
+
+  所以$\forall p, q \in G, \varphi(p \circ q) = \varphi(p) * \varphi(q)$，$\varphi$为一个$G$到$G_1$的同态。
+  \begin{gather*}
+    \gamma = \{(e, \{e, x\}), (e, \{e, x\}), (y, \{y, z\}), (z, \{y, z\}) \} \\
+    \bar{\varphi} = \{(\{e, x\}, e_1), (\{y, z\}, a) \} \\
+    \varphi = \bar{\varphi} \circ \gamma
+  \end{gather*}
+\end{proof*}
+
+\subsection{第四题}
+\begin{proof*}
+  显然$Z(\sqrt{2}) \subset R$，而由于$(R, +, \times)$是一个环，
+  所以若$(Z(\sqrt{2}), + *)$为环，则$Z(\sqrt{2})$为$R$的一个子环，可知我们只需证明$\forall a, b \in Z(\sqrt{2}), ab, a - b \in Z(\sqrt{2})$。
+
+  $\forall a, b \in Z(\sqrt{2}), \exists m_1, m_2, n_1, n_2 \in Z, a = m_1 + n_1\sqrt{2}, b = m_2 + n_2\sqrt{2}$
+  \begin{align*}
+    ab    & = (m_1 + n_1\sqrt{2}) \times (m_2 + n_2\sqrt{2}) \\
+          & = (m_1m_2 + 2n_1n_2) + (m_1n_2 + m_2n_1)\sqrt{2} \in Z(\sqrt{2}) \\
+    a - b & = (m_1 + n_1\sqrt{2}) - (m_2 + n_2\sqrt{2}) \\
+          & = (m_1 - m_2) + (n_1 - n_2)\sqrt{2} \in Z(\sqrt{2})
+  \end{align*}
+
+  所以$(Z(\sqrt{2}), +, \times)$为一个环。
+\end{proof*}
+
+\subsection{第五题}
+\begin{proof*}
+  先证明$(Z(i), +)$是一个Abel群。
+  $\forall a, b, c \in Z(i), \exists m_1, m_2, m_3, n_1, n_2, n_3 \in Z, a = m_1 + n_1i, b = m_2 + n_2i, c = m_3 + n_3i$
+  \begin{align*}
+    a + b &= (m_1 + n_1i) + (m_2 + n_2i) \\
+          &= (m_1 + m_2) + (n_1 + n_2)i \in Z(i) \\
+    b + a &= (m_2 + n_2i) + (m_1 + n_1i) \\
+          &= (m_2 + m_1) + (n_2 + n_1)i \\
+          &= (m_1 + m_2) + (n_1 + n_2)i \\
+          &= a + b \\
+    (a + b) + c &= ((m_1 + n_1i) + (m_2 + n_2i)) + (m_3 + n_3i) \\
+          &= (m_1 + m_2 + m_3) + (n_1 + n_2 + n_3)i \\
+          &= (m_1 + n_1i) + ((m_2 + n_2i) + (m_3 + n_3i)) \\
+          &= a + (b + c) \\
+    0 + a &= 0 + (m_1 + n_1i) \\
+          &= m_1 + n_1i \\
+          &= a \\
+    (-m_1 - n_1i) + a &= (-m_1 - n_1i) + (m_1 + n_1i) \\
+          &= 0
+  \end{align*}
+  所以$+$是$Z(i)$上的二元运算，满足交换律和结合律，且代数系存在幺元，每个元素存在左逆元。
+  所以$(Z(i), +, 0)$是一个Abel群。
+
+  再证明$(Z(i), \times)$是一个半群。
+  $\forall a, b, c \in Z(i), \exists m_1, m_2, m_3, n_1, n_2, n_3 \in Z, a = m_1 + n_1i, b = m_2 + n_2i, c = m_3 + n_3i$
+  \begin{align*}
+    a \times b &= (m_1 + n_1i) \times (m_2 + n_2i) \\
+          &= (m_1m_2 - n_1n_2) + (m_1n_2 + m_2n_1)i \in Z(i) \\
+    (a \times b) \times c &= ((m_1 + n_1i) \times (m_2 + n_2i)) \times (m_3 + n_3i) \\
+          &= ((m_1m_2 - n_1n_2) + (m_1n_2 + m_2n_1)i) \times (m_3 + n_3i) \\
+          &= (m_1m_2m_3 - m_1n_2n_3 - n_1m_2n_3 - n_1n_2m_3) + (m_1m_2n_3 + m_1n_2m_3 + n_1m_2m_3 - n_1n_2n_3)i \\
+    a \times (b \times c) &= (m_1 + n_1i) \times ((m_2 + n_2i) \times (m_3 + n_3i)) \\
+          &= (m_1 + n_1i) \times ((m_2m_3 - n_2n_3) + (m_2n_3 + m_3n_2)i) \\
+          &= (m_1m_2m_3 - m_1n_2n_3 - n_1m_2n_3 - n_1n_2m_3) + (m_1m_2n_3 + m_1n_2m_3 + n_1m_2m_3 - n_1n_2n_3)i \\
+    (a \times b) \times c &= a \times (b \times c)
+  \end{align*}
+  所以$\times$是$Z(i)$上的二元运算，且满足结合律，所以$(Z(i), \times)$是一个半群。
+
+  最后证明$\times$对$+$满足分配律。
+  $\forall a, b, c \in Z(i), \exists m_1, m_2, m_3, n_1, n_2, n_3 \in Z, a = m_1 + n_1i, b = m_2 + n_2i, c = m_3 + n_3i$
+  \begin{align*}
+    a \times (b + c) &= (m_1m_2 + m_1m_3 - n_1n_2 - n_1n_3) + (n_1m_2 + n_1m_3 + m_1n_2 + m_1n_3)i \\
+                &= (m_1m_2 - n_1n_2) + (n_1m_2 + m_1n_2)i + (m_1m_2 - n_1n_3) + (n_1m_3 + m_1n_3)i \\
+                &= a \times b + a \times c \\
+    (b + c) \times a &= (m_1m_2 + m_1m_3 - n_1n_2 - n_1n_3) + (n_1m_2 + n_1m_3 + m_1n_2 + m_1n_3)i \\
+                &= b \times a + c \times a
+  \end{align*}
+
+  综上所述，$(Z(i), +, \times)$为一个环。
+\end{proof*}
+
+\subsection{第六题}
+\begin{proof*}
+  取$(1 + \sqrt[3]{2}) \in Q(\sqrt[3]{2})$，则
+  $(1 + \sqrt[3]{2}) \times (1 + \sqrt[3]{2}) &= 1 + 2\sqrt[3]{2} + 2^\frac{2}{3} \notin Q(\sqrt[3]{2})$，
+  所以$\times$对$Q(\sqrt[3]{2})$不封闭，$Q(\sqrt[3]{2})$对数的通常加法和乘法不构成一个环。
+\end{proof*}
+
+\subsection{第七题}
+\begin{proof*}
+  由于$(R, +, \times)$是一个域，$Q(\sqrt[3]{2}, \sqrt[3]{4}) \subset R$，$\times$具有交换律。
+  所以若可以证明$Q(\sqrt[3]{2}, \sqrt[3]{4})$是$R$的一个子体，则命题得证。
+
+  显然$|Q(\sqrt[3]{2}, \sqrt[3]{4})| \geq 2$。
+  $\forall x, y \in Q(\sqrt[3]{2}, \sqrt[3]{4}), \exists a_1, a_2, b_1, b_2, c_1, c_2 \in Q
+  x - y = (a_1 + b_1\sqrt[3]{2} + c_1\sqrt[3]{4}) - (a_2 + b_2\sqrt[3]{2} + c_2\sqrt[3]{4})
+  = (a_1 - a_2) + (b_1 - b_2)\sqrt[3]{2} + (c_1 - c_2)\sqrt[3]{4} \in Q(\sqrt[3]{2}, \sqrt[3]{4})$，
+  如果$x \neq 0, y \neq 0$，则$a_1, b_1, c_1$不同时为零，$a_2, b_2, c_2$不同时为零。
+  则$ab^{-1} \in Q(\sqrt[3]{2}, \sqrt[3]{4})$。
+  所以$Q(\sqrt[3]{2}, \sqrt[3]{4})$是$R$的一个子体。
+
+  综上所述，$Q(\sqrt[3]{2}, \sqrt[3]{4})$是一个域。
+\end{proof*}
+
+\subsection{第八题}
+\begin{proof*}
+  若$e$不是单位元，则$e$不是右单位元，$\exists a \in R, ea = a, ae \neq a$，则$ae - a + e \neq e$。
+  而$\forall b \in R, (ae - a + e)b = aeb - ab + b = b$，所以$ae - a + e$也是一个左单位元。
+  这与$e$为唯一左单位元矛盾，所以$e$是单位元。
+\end{proof*}
+
+\subsection{第九题}
+\begin{proof*}
+  由于$a$，$b$，$ab - 1$有逆元，所以
+  \begin{align*}
+    (a - b^{-1})(b{(ab - 1)}^{-1}) &= ((a - b^{-1})b){(ab - 1)}^{-1} \\
+                                   &=  (ab - 1){(ab - 1)}^{-1} \\
+                                   &= 1 \\
+    \therefore {(a - b^{-1})}^{-1} &= b{(ab - 1)}^{-1} \\
+    ({(a - b^{-1})}^{-1} - a^{-1})(aba - a) &= (b{(ab - 1)}^{-1} - a^{-1})(ab - 1)a \\
+                                   &=(b - a^{-1}(ab - 1))a \\
+                                   &= ba - ba + 1 \\
+                                   &= 1 \\
+    \therefore {({(a - b^{-1})}^{-1} - a^{-1})}^{-1} &= (aba - a)
+  \end{align*}
+
+  命题得证。
+\end{proof*}
+
+\subsection{第十题}
+\begin{proof*}
+  不妨设$a$为$R$的一个零因子，则$\exists b \in R, b \neq 0, ab = 0$。
+  若$a$存在逆元素$a^{-1}$，则
+  \begin{gather*}
+    ab = 0 \\
+    a^{-1}ab = 0 \\
+    b = 0
+  \end{gather*}
+
+  产生矛盾，所以$a$不存在逆元。
+\end{proof*}
+
+\subsection{第十一题}
+\begin{proof*}
+  由于$a, b$在交换环中，所以$ab = ba$，由环的性质有
+  \begin{align*}
+    {(a + b)}^{n} = \sum_{i = 1}^{n}\bigl( \begin{array}{c} n \\ i \end{array} \bigr) a^ib^{n-i}
+  \end{align*}
+
+  命题得证。
+\end{proof*}
+
+\subsection{第十二题}
+\begin{proof*}
+  显然$0$无左逆元。对于任一有左逆元的非零元素$a$，设其左逆元为$a_l$。
+  若$a$无右逆元，则$aa_l \neq e, a_{l}aa_l \neq a_l, a_l \neq a_l$，产生矛盾，所以$a$有右逆元，进而有逆元。
+\end{proof*}
+
+\subsection{第十三题}
+\begin{proof*}
+  若$ab = ba$，则
+  \begin{align*}
+    a(-b) &= -(ab) \\
+          &= -(ba) \\
+          &= (-b)a \\
+    a(-ab) &= -(aab) \\
+          &= -(aba) \\
+          &= (-ab)a \\
+  \end{align*}
+  所以$a$与$−b$，$a$与$−ab$可交换。
+
+  若$a$与$b, c$可交换，即$ab = ba, ac = ca$，则
+  \begin{align*}
+    a(b + c) &= ab + ac \\
+             &= ba + ca \\
+             &= (b + c)a \\
+    a(a + c) &= aa + ac \\
+             &= aa + ca \\
+             &= (a + c)a
+  \end{align*}
+  所以$a$与$b+c$，$a$与$a+c$可交换。
+\end{proof*}
+
+\end{document}

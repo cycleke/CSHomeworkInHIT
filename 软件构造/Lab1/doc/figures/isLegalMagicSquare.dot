@@ -1,0 +1,28 @@
+digraph {
+  node[shape=box];
+
+  creatStream[style=rounded,label="打开文件，创建读入流"];
+  creatList[label="创建空矩阵"];
+  hasNext[shape=diamond,label="是否有新的行？"];
+  readLine[shape=parallelogram,label="读入行"];
+  parseLine[label="解析读入的一行字符串"];
+  checkValid[label="是否有错误？"];
+  addToMatrix[label="添加到行列表中"];
+  error[style=rounded,label="打印对应错误，返回假值"];
+  checkSquare[label="是否为方阵？"];
+  checkSum[label="行、列、对角线的和是否相等？"];
+  correct[style=rounded,label="返回真值"];
+
+  creatStream -> creatList -> hasNext;
+  hasNext -> readLine[label="Yes"];
+  hasNext -> checkSquare[label="No"];
+  readLine -> parseLine -> checkValid;
+  checkValid -> addToMatrix[label="Yes"];
+  checkValid -> error[label="No"];
+  addToMatrix -> hasNext;
+
+  checkSquare -> error[label="No"];
+  checkSquare -> checkSum[label="Yes"];
+  checkSum -> error[label="No"];
+  checkSum -> correct[label="Yes"];
+}

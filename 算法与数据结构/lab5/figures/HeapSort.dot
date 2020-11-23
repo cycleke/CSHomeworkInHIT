@@ -1,0 +1,45 @@
+digraph {
+  for1_init[label="i = n / 2"];
+  for1_cond[label="i >= 0"];
+  for1_iter[label="dec i"];
+  heap1[label="call MaxHeapify(i, n)"];
+  for2_init[label="i = n - 1"];
+  for2_cond[label="i >= 0"];
+  for2_iter[label="dec i"];
+  swap[label="swap a[i] and a[0]"];
+  heap2[label="call MaxHeapify(0, i)"];
+
+  subgraph cluster_heapify {
+    style=dotted;
+    label="max heapify the heap sized n from node p";
+    heap_init[label="ch = 2 * p + 1"];
+    heap_cond[label="ch < n"];
+    heap_judge1[label="ch + 1 < n && a[ch + 1] > a[ch]"];
+    heap_do1[label="inc ch"];
+    heap_judge2[label="a[p] >= a[ch]"];
+    heap_swap[label="swap a[p] and a[ch]"];
+    heap_iter[label="p = ch, ch = 2 * p + 1"];
+    heap_end[label="end", rank=max];
+
+    heap_init -> heap_cond;
+    heap_cond -> heap_judge1[label="Yes"];
+    heap_cond -> heap_end[label="No"];
+    heap_judge1 -> heap_do1[label="Yes"];
+    heap_judge1 -> heap_judge2[label="No"];
+    heap_do1 -> heap_judge2;
+    heap_judge2 -> heap_swap[label="Yes"];
+    heap_judge2 -> heap_end[label="Yes"];
+    heap_judge2 -> heap_swap[label="No"];
+    heap_swap -> heap_iter -> heap_cond;
+  }
+
+  for1_init -> for1_cond;
+  for1_cond -> heap1[label="Yes"];
+  for1_cond -> for2_init[label="No"];
+  heap1 -> heap_init[style=dotted];
+  heap1 -> for1_iter -> for1_cond;
+
+  for2_init -> for2_cond;
+  for2_cond -> swap[label="Yes"];
+  swap -> heap2 -> for2_iter -> for2_cond;
+}

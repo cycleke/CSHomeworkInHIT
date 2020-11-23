@@ -1,0 +1,562 @@
+% !Tex Program = xelatex
+% -*-coding: utf-8 -*-
+\documentclass[12pt,onecolumn]{article}
+
+% 中文
+\usepackage[BoldFont,SlantFont]{xeCJK}
+\xeCJKsetemboldenfactor{1}%只对随后定义的CJK字体有效
+\setCJKfamilyfont{hei}{SimHei}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{song}{SimSun}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{fs}{FangSong}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{li}{LiSu}
+\setCJKfamilyfont{xw}{STXinwei}
+\setCJKmainfont{SimSun}
+
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows 自带simsun.ttf)
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows 自带simfs.ttf)
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows 自带simkai.ttf)
+\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
+\newcommand{\xw}{\CJKfamily{xw}}        % 隶书   (Windows自带simli.ttf)
+
+% \AmSTeX\ 宏包，用来排出更加漂亮的公式。
+\usepackage{amsmath}
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{amssymb}
+% 添加字体
+\usepackage[defaultsups]{newtxtext}
+\usepackage{newtxmath}
+\usepackage{courier}
+% 图形支持宏包
+\usepackage{graphicx}
+% 插入pdf
+\usepackage{pdfpages}
+\includepdfset{fitpaper=true}
+% 更好的列表环境。
+\usepackage{enumitem}       %使用enumitem宏包,改变列表项的格式
+\usepackage{environ}
+% 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
+\usepackage[bottom,perpage,hang]{footmisc}
+\raggedbottom
+% 脚注格式。
+\usepackage{pifont}
+% 表格控制
+\usepackage{longtable}
+\usepackage{booktabs}
+% 参考文献引用宏包
+\usepackage[sort&compress]{natbib}
+% 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
+\usepackage{hyperref}
+\hypersetup{
+  CJKbookmarks=true,
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=false,
+  plainpages=false,
+  pdfborder=0 0 0}
+% 设置 url 样式，与上下文一致
+\urlstyle{same}
+% 版芯设置
+\usepackage{geometry}
+\geometry{
+  centering,
+  text={150true mm,236true mm},
+  left=30true mm,
+  head=5true mm,
+  headsep=2true mm,
+  footskip=0true mm,
+  foot=5.2true mm
+}
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+\usepackage{fancyhdr}
+% 其他包，表格、数学符号包
+\usepackage{tabularx}
+\usepackage{varwidth}
+% 此处changepage环境用来控制索引页面的左右边距，规范中给出的示例的边距要大于正文。
+\usepackage{changepage}
+% 多栏结构在文中用begin{multicols}{2}end{multicols}
+\usepackage{multicol,multienum}
+% 允许上一个section的浮动图形出现在下一个section的开始部分,还提供\FloatBarrier命
+% 令,使所有未处理的浮动图形立即被处理
+\usepackage[below]{placeins}
+% 支持子图 %centerlast 设置最后一行是否居中
+\usepackage{subfigure}
+% 支持双语标题
+\usepackage[subfigure]{ccaption}
+% 根据我工规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
+\renewcommand\normalsize{%
+  % \@setfontsize\normalsize{12bp}{\ifhit@glue 20.50398bp \@plus 2.83465bp \@minus 0bp\else 20.50398bp\fi}%
+  \abovedisplayskip=8pt
+  \abovedisplayshortskip=8pt
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip}
+% 根据习惯定义字号。用法：\cs{hit@def@fontsize}\marg{字号名称}\marg{磅数}避免了
+% 字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+\def\hit@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+\hit@def@fontsize{dachu}{58bp}
+\hit@def@fontsize{chuhao}{42bp}
+\hit@def@fontsize{xiaochu}{36bp}
+\hit@def@fontsize{yihao}{26bp}
+\hit@def@fontsize{xiaoyi}{24bp}
+\hit@def@fontsize{erhao}{22bp}
+\hit@def@fontsize{xiaoer}{18bp}
+\hit@def@fontsize{sanhao}{16bp}
+\hit@def@fontsize{xiaosan}{15bp}
+\hit@def@fontsize{sihao}{14bp}
+\hit@def@fontsize{banxiaosi}{13bp}
+\hit@def@fontsize{xiaosi}{12bp}
+\hit@def@fontsize{dawu}{11bp}
+\hit@def@fontsize{wuhao}{10.5bp}
+\hit@def@fontsize{xiaowu}{9bp}
+\hit@def@fontsize{liuhao}{7.5bp}
+\hit@def@fontsize{xiaoliu}{6.5bp}
+\hit@def@fontsize{qihao}{5.5bp}
+\hit@def@fontsize{bahao}{5bp}
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+\setlist{nosep}
+% 允许太长的公式断行、分页等。
+\allowdisplaybreaks[4]
+\predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
+\postdisplaypenalty=0
+% 公式编号设置
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\hei}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem*{proof}{证明}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theoremseparator{}
+\newtheorem{assumption}{假设}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{exercise}{练习}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{remark}{注释}[section]
+\newtheorem{problem}{问题}[section]
+\newtheorem{conjecture}{猜想}[section]
+% 各种单位
+\usepackage{siunitx}
+\sisetup{group-minimum-digits=4, group-separator= \hspace{0.25em}}
+\sisetup{detect-weight,detect-mode,detect-family}
+% 处理数学公式中的黑斜体的宏包
+\usepackage{bm}
+% 不同于 \mathcal \mathfrak 之类的英文花体字体
+\usepackage{mathrsfs}
+% 支持彩色
+\usepackage{xcolor}
+\definecolor{colorzero}{rgb}{0, 0, 0}
+\definecolor{colorone}{rgb}{1, 0, 0}
+\definecolor{colortwo}{rgb}{0, 0, 1}
+\definecolor{colorthree}{rgb}{0, 1, 0}
+% 图形和表格的控制旋转
+\usepackage{rotating}
+% 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
+% 生成算法列表。
+\usepackage[algoruled,linesnumbered]{algorithm2e}
+% 排版源码所使用的环境。
+\usepackage{listings}
+\lstset{
+  breaklines  = true,
+  captionpos  = b,
+  tabsize     = 2,
+  numbers     = left,
+  columns     = flexible,
+  keepspaces  = true,
+  % commentstyle = \color[RGB]{0,128,0},
+  % keywordstyle = \color[RGB]{0,0,255},
+  basicstyle   = \small\ttfamily,
+  rulesepcolor = \color{red!20!green!20!blue!20},
+  showstringspaces = false,
+}
+
+% 作图
+\usepackage{tikz}
+
+% 首行缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage{float}
+\usepackage{diagbox}
+\usepackage{setspace}
+\usepackage{zhnumber}
+
+\graphicspath{{figures/}}
+
+\pagestyle{fancy}
+\fancyhead[L]{\song\xiaowu[0]{cycleke}}
+\fancyhead[C]{\song\xiaowu[0]{哈尔滨工业大学}}
+\fancyhead[R]{\song\xiaowu[0]{近世代数（2020春）课程报告}}
+\fancyfoot[C]{\xiaowu-~\thepage~-}
+
+\renewcommand{\today}{\number\year{年}\number\month{月}\number\day{日}}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\begin{titlepage}
+  \centering
+  \hei\LARGE{}
+  \vspace{3\baselineskip}
+
+  近世代数（2020春）
+
+  课程报告
+
+  \vspace{16\baselineskip}
+
+  \begin{flushleft}
+    \hspace{2cm}班级：\underline{xxxxxx}
+
+    \hspace{2cm}学号：\underline{xxxxxxxxxx}
+
+    \hspace{2cm}姓名：\underline{cycleke}
+  \end{flushleft}
+\end{titlepage}
+
+\begin{document}
+\clearpage
+
+\begin{table*}[h]
+ \vspace{2\baselineskip}
+ \xiaosi
+ \begin{tabular}{|c|c|c|c|c|c|c|}
+ \hline
+ 题号 & 一 & 二 & 三 & 四 & 五 & 总分 \\
+ \hline
+ 得分 &    &    &    &    &    &      \\
+ \hline
+ \end{tabular}
+\end{table*}
+
+\section{阐述一下半群和群的关系，并举例说明如何由半群和群来构造一个有限环。（20分）}
+
+\subsection{半群和群}
+半群和群都是用于表示两类具有特别性质的代数系。
+半群的定义如下：
+\begin{definition}{（半群）}
+ 设“$\circ$”是非空集合$S$上的一个二元代数运算，称为乘法。
+ 如果$\forall a, b, c \in S$，有$(a \circ b) \circ c = a \circ (b \circ c)$，
+ 则称集合$S$对乘法$\circ$形成一个半群（semigroup），并记为$(S, \circ)$。
+\end{definition}
+
+而在半群中有一种特别的半群：幺半群。
+\begin{definition}{（幺半群）}
+ 有单位元素的半群$(S, \circ)$称为独异点（monoid）或称为幺半群。
+\end{definition}
+即如果$(S, \circ)$是一个幺半群，那么$\exists e \in S$，使得$\forall a \in S, a \circ e = e \circ a = a$。
+
+此时我们定义一个概念：逆元素。
+\begin{definition}{（逆元素）}
+ 设$(S, \circ, e)$是一个幺半群。
+ 元素$a \in S$称为有逆元素，如果存在$b \in S$使$a \circ b = b \circ a = e$，此时$b$叫做$a$的逆元素。
+\end{definition}
+而群就是一种更加特别的幺半群：
+\begin{definition}{（群）}
+ 对于幺半群$(S, \circ, e)$，如果其中中的每个元素$a \in S$，都存在一个逆元素$b \in S$，
+ 那么我们称它为一个群。
+\end{definition}
+
+总的来说，半群就是一个代数系$(S, \circ)$，乘法“$\circ$”在集合$S$上满足封闭性和结合律。
+群则是一类特殊的半群，它的乘法“$\circ$”在集合$S$上不仅满足封闭性和结合律，
+而且存在单位元素$e$，每个元素都存在一个逆元素。
+
+\subsection{构造有限环}
+环是一种更复杂的代数系。
+\begin{definition}{（环）}
+ 设$R$是一个非空集合，$R$中有两个代数远算，
+ 一个叫做加法并用加号“$+$”表示，另一个叫做乘法并用“$\circ$”表示。
+ 如果
+ \begin{enumerate}[fullwidth,itemindent=\parindent,label=（\arabic*）]
+ \item $(R, +)$是一个 Abel 群；
+ \item $(R, \circ)$是一个半群；
+ \item 乘法对加法满足左、右分配律：$\forall a, b, c \in R$有
+ \begin{align*}
+ a \circ (b + c) & = (a \circ b) + (a \circ c) \\
+ (b + c) \circ a & = (b \circ a) + (c \circ a)
+ \end{align*}
+ \end{enumerate}
+ 则称代数系$(R, +, \circ)$为一个环。
+\end{definition}
+
+所以我们可以考虑
+群$G$，其集合为模5剩余类$Z_5$，“乘法”为模意义下的加法$\oplus, [i] \oplus [j] = [i + j]$；
+半群$S$，其集合同为模5剩余类$Z_5$，“乘法”为模意义下的乘法$\otimes, [i] \otimes [j] = [i \times j]$。
+
+容易证明（事实上在课本中已经证明了），$G$为一个 Abel 群，$S$为一个半群，
+且模意义下的乘法$\otimes$对模意义下的加法$\oplus$满足分配律。
+又因为$|Z_5| = 5$，所以$(Z_5, \oplus, \otimes)$是一个有限环。
+
+\section{举例说明群的同构 Cayley 定理的意义。你认为在研究两个代数系统之间的关系时候，该定理有什么局限性没有？如果有，你有什么解决方案？（20分）}
+
+\subsection{Cayley 定理的意义}
+我们首先介绍变换群的概念。
+
+\begin{definition}{（对称群）}
+ 设$S$是一个非空集合。从$S$到$S$的所有一一对应之集记为$Sym(S)$，
+ 则$Sym(S)$对映射的合成构成一个群，称为$S$上的对称群。n
+\end{definition}
+
+\begin{definition}{（变换群）}
+ $Sym(S)$的任一子群称为$S$上的一个变换群。
+\end{definition}
+
+\begin{theorem}{（群的 Cayley 同构定理）}
+ 任何一个群都同构于某个变换群。
+\end{theorem}
+
+更为具体地，每一个群$G$都同构于变换群$L(G) = \{ f_a \mid f_a : G \to G, \forall x \in G, f_a(x) = a \circ x, a \in G \}$。
+特别地，对于有限群，$L(G)$是一个置换群，即
+\[
+ L(G) =
+ \left\{
+ \left(
+ \begin{array}{cccc}
+ a_1    & a_2    & \ldots & a_n    \\
+ a_ia_1 & a_ia_2 & \ldots & a_ia_n
+ \end{array}
+ \right)
+ \bigg| a_i \in G
+ \right\}
+\]
+
+利用 Cayley 定理，我们可以为任何一个抽象的群找到一个对应的变换群模型。
+相比与原本的抽象群，我们找到的变换群比较具体，
+其元素是一一对应的，代数运算是一一对应的合成，
+不但具体而且容易计算。
+因此，用变换群给出抽象群的例子是方便和合理的。
+经验告诉我们，相比与抽象，具体的例子总是更容易理解和分析的。
+
+\subsection{Cayley 定理的局限性}
+Cayley 定理要求我们研究的对象必须是一个群。
+对于一个抽象的代数系统，
+如果它不是一个群，那么我们就无法应用 Cayley 定理，
+那么就不得不又去研究那个抽象的代数系统。
+
+\subsection{对于局限性的解决方案}
+为了解决 Cayley 定理的局限性，我们需要对 Cayley 定理进行一定程度的拓展。
+
+\begin{theorem}
+ 任何一个半群都同构于某个对称群的子集。
+\end{theorem}
+
+\begin{proof}
+ 设$(S, \circ)$为一个半群。
+ 构造$L = \{f_a \mid f_a : S \to S, \forall x \in S, f_a(x) = a \circ x, a \in G\}$。
+
+ 首先证明$L$对于映射的合成构成一个半群。
+ 事实上，$\forall f_a, f_b \in L$，$f_a \bullet f_b(x) = f_a(f_b(x)) = a \circ b \circ x = f_{a \circ b} (x)$，
+ 所以$f_{a \circ b} = f_a \bullet f_b$，$\bullet$在$L$上封闭。
+ 又因为映射的合成满足结合律，所以$(L, \bullet)$构成一个半群。
+
+ 令映射$\varphi : S \to L, \varphi(a) = f_a, \forall a \in G$，不难发现$\varphi$是一一对应且
+ $\forall a, b \in G, \varphi(a \circ b) = f_{a \circ b} = f_a \bullet f_b = \varphi(a) \bullet \varphi(b)$。
+ 因此，$\varphi$是一个$S$到$L$的同构。
+\end{proof}
+
+这样我们就可以将一个抽象的半群具体化为具体的半群。
+而对于其他的代数系统，我们可以亦根据其性质来构造对应的具体的代数系。
+
+\section{结合实例给出判定一个子群是否为正规子群的方法，并说明在代数系统研究中正规子群有什么重要应用？（20分）}
+
+\subsection{判定正规子群}
+
+\begin{definition}
+ 设$H$是群$G$的子群。
+ 如果$\forall a \in G$，有$aH = Ha$，
+ 则称$H$是$G$的正规子群，
+ 记为$H \triangleleft G$。
+\end{definition}
+
+正规子群是左右陪集相等的子群，
+我们可以直接使用定义来判定一个子群是否为正规子群。
+如对于群$(Z_5, \oplus)$，其子群$H_1 = (\{[0]\}, \oplus)$和$H_2 = (\{[0], [1]\}, \oplus)$，
+容易证明$\forall a \in Z_5, \text{设}a = [x], aH_1 = \{a\} = H_1a$，
+$aH_2 = \{[x], [x + 1]\} = H_2a$。
+所以$H_1, H_2$均为群$(Z_5, \oplus)$的正规子群。
+
+使用定义判定很直接，
+但是使用时不够灵活，证明较繁琐。
+我们平时还可以使用正规子群的充要条件（定理\ref{theo:normal_subgroup}）来判定正规子群。
+
+\begin{theorem}
+ \label{theo:normal_subgroup}
+ 设$H$是群$G$的一个子群，则下面三个命题等价：
+ \begin{enumerate}[fullwidth,itemindent=\parindent,label=（\arabic*）]
+ \item $H$是$G$的正规子群
+ \item $\forall a \in G, aHa^{-1} = H$
+ \item $\forall a \in G, aHa^{-1} \subseteq H$
+ \end{enumerate}
+\end{theorem}
+
+容易看出，第三个命题是较弱的，
+故我们一般采用命题三来判定正规子群。
+一个例子是我们可以使用命题三来证明换位子群是正规子群。
+
+\begin{theorem}
+ 群$G$的换位子群$H$是$G$的正规子群。
+\end{theorem}
+\begin{proof}
+ 因为$H$是$G$的换位子群，所以$\forall h \in H, g \in G$，有
+ $ghg^{-1}h^{-1} \in H$，于是$ghg^{-1} = (ghg^{-1}h^{-1})h \in H$。
+ 所以$\forall g \in G, gHg^{-1} \subseteq H$，$H$是$G$的正规子群。
+\end{proof}
+
+而使用命题二我们亦可以判定一个正规子群。
+在群$(S_3, \circ)$的子群中，
+$H = \{I, (1~2~3), (1~3~2)\}$就构成了一个正规子群，
+判定如下：
+\begin{gather*}
+ IHI              = H \\
+ (1~2)H(1~2)      = H \\
+ (1~3)H(1~3)      = H \\
+ (2~3)H(2~3)      = H \\
+ (1~2~3)H(1~3~2)  = H \\
+ (1~3~2)H(1~2~3)  = H
+\end{gather*}
+
+
+除此以外，我们还可以使用其他的定理来判定一个子群是否为正规子群。
+
+\begin{theorem}
+ 群$G$的子群$H$是$G$的正规子群当且仅当对$G$的任一内自同构$\varphi$有$\varphi(H) = H$。
+\end{theorem}
+
+不难发现，该定理的判定条件与定理\ref{theo:normal_subgroup}中的命题二是等价的。
+
+\subsection{正规子群的应用}
+正规子群在群论中占有重要的地位。
+正规子群之所以重要是它的陪集构成的集群对群子集形成群。
+
+\begin{theorem}
+ 设$H$是$G$的正规子群，$H$的所有左陪集构成的集族$S_l$对群子集乘法形成一个群。
+\end{theorem}
+
+\begin{definition}
+ 群$G$的正规子群$H$的所有左陪集构成的集族，对群子集乘法构成的群称为$G$对$H$的商群，记为$G / H$。
+\end{definition}
+
+我们可以看到，每个正规子群，对应了一个商群。
+商群的乘法是借助与$G$的乘法定义的，
+而商群$G / H$与群$G$有密切的联系。
+因此，对$G / H$的研究将有助于对$G$的性质的深刻认识。
+因此，正规子群在群论中占有重要的地位。
+
+此外，利用正规子群$H$对应的商群$G / H$，
+我们可以定义$G$上的一个等价关系。
+这个等价关系是这样的：
+$\forall a, b \in G$，
+$a \cong b$当且仅当$ab^{-1} \in H$。
+而且这个等价关系是同余关系，即
+若$a \cong b, a' \cong b'$，则$a \circ a' \cong b \circ b'$。
+此外正规子群在群的同态基本定理（定理\ref{theo:homomorphism}）中也有应用。
+
+\begin{theorem}
+ 设$H$是群$G$的子群，则$H$是正规子群的充分必要条件是
+ $G$上的由$H$确定的等价关系“$\cong$”：
+ \[
+ a \cong b \text{当且仅当} ab^{-1} \in H
+ \]
+\end{theorem}
+
+\section{通过实例来简述群的同态基本定理及其意义，并结合你的例子指出其中同态核的意义。（30分）}
+
+\subsection{群的同态基本定理及其意义}
+
+\begin{definition}
+ 设$\varphi$是群$(G, \circ)$到群$(\bar{G}, \bullet)$的满同态，
+ $\bar{e}$是$\bar{G}$的单位元，
+ 则$G$的正规子群$\varphi^{-1}(\bar{e})$称为同态$\varphi$的核，记为$Ker~\varphi$。
+ $\varphi(G)$称为在$\varphi$下$G$的同态象。
+\end{definition}
+
+\begin{theorem}{（群的同态基本定理）}
+ \label{theo:homomorphism}
+ 设$\varphi$是群$SG$到群$\bar{G}$的满同态，$E = Ker~ \varphi$，则
+ \[
+ G / E \cong \bar{G}
+ \]
+\end{theorem}
+
+群的同态基本定理的意义在于，
+设$G$的性质已经比较清楚，
+而群$\bar{G}$的性质的尚不太清楚，
+那么基于定理\ref{theo:homomorphism}，
+如果能建立一个从$G$到$\bar{G}$的满同态$\varphi$，
+则$\bar{G} \cong G / Ker~\varphi$，
+从而$\bar{G}$与$G / Ker~ \varphi$的性质完全一样。
+而群$G / Ker~\varphi$是$G$的正规子群 $Ker~\varphi$的陪集，
+是$G$的一个特殊的等价类划分，其乘法是借由$G$的乘法定义的。
+因此，$G / Ker~\varphi$的性质容易从$G$的一些性质得到。
+也就是说，定理\ref{theo:homomorphism}为我们提供了
+一种从已知群推导另一个群的性质的方法。
+
+例如，我们已知群$G = (Z_6, \oplus)$这个群的性质，
+如果我们要研究群$\bar{G} = (\{0, \frac{2\pi}{3}, \frac{4\pi}{3}\}, \circ)$，
+$\bar{G}$表示的三个用弧度表示的角，其的乘法为逆时针旋转。
+
+不难得出，$G$的单位元为$[0]$，$\bar{G}$的单位元为$0$。
+$G$到$\bar{G}$的满同态$\varphi: G \to \bar{G},
+\varphi([x]) = \frac{2\pi (x\mod 3)}{3}$。
+所以$Ker~\varphi = \{[0], [3]\}$，根据定理\ref{theo:homomorphism}有
+\[
+  \bar{G} \cong G / Ker~\varphi = \{\{[0], [3]\}, \{[1], [4]\}, \{[2], [5]\}\}
+\]
+
+故有结论$\bar{G}$是一个三阶循环群。
+
+\subsection{同态核的意义}
+
+$Ker~\varphi$不仅是$G$的一个子群，而且是一个正规子群。
+因此，商群$G / Ker~G$变得具有意义。
+在上面的例子中，
+我们是依据同态核$Ker~\varphi$来将群$G$来进行划分为
+$\{\{[0], [3]\}, \{[1], [4]\}, \{[2], [5]\}\}$。
+我们将模6意义下差（或者说$G$中的商）在$Ker~\varphi$中的
+元素划分到同一个集合。
+
+
+\section{谈一下抽象代数系统的学习给你带来的体会，以及你对此门课程今后的建议。（10分）}
+在以前，我学习的都是具体的代数系统，如
+实数$\mathbb{R}$上对四则运算法构成的算数系统和
+包含了集合论运算（如并集、交集、补集）的集合代数。
+而抽象代数系统是对于一类代数系统的抽象，而不是某一个特定的代数系统。
+它不关注某个特定代数系统本身的性质，
+而是关注一类具有相似点的代数系统共有的性质。
+相比与原本具体的代数系统，
+抽象代数系统的抽象层次提升了许多，
+对应地，学习和理解的难度也提升了许多。
+
+抽象代数系统的学习提高了我的抽象能力和理解能力。
+在计算机理论和应用中，
+抽象是一项十分重要的能力，
+如计算建模就是将实际问题抽象为一个模型来研究。
+抽象代数系统的定理更加抽象，
+同时也更加一般，可以拓展到更多的代数系统中。
+利用抽象代数系统，我们可以实现代数系统的公理化，
+严谨地研究更为一般的代数系统，得到更为一般的理论。
+例如，各类置换群的结论可被视为“抽象群”的一般概念有关之一般性定理的特例。
+
+由于本学期是在线上授课，
+我感觉上课过程中关于证明过程和证明思路的教学不足，
+个人感觉有点遗憾，
+希望在日后的教学中可以强化这一方面。
+
+\end{document}

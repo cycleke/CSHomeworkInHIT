@@ -1,0 +1,22 @@
+digraph {
+  get_bf[label="calculate the bf of node"];
+
+  L_[label="is LR case?"];
+  LR[label="left rotate the leftson of node"];
+  LALL[label="righ trotate node"];
+
+  R_[label="is RL case?"];
+  RL[label="right rotate the rightson of node"];
+  RALL[label="left rotate node"];
+
+  get_bf -> L_[label="bf > 1"];
+  get_bf -> R_[label="bf < -1"];
+
+  L_ -> LR[label="Yes"];
+  L_ -> LALL[label="No"];
+  LR -> LALL;
+
+  R_ -> RL[label="Yes"];
+  R_ -> RALL[label="No"];
+  RL -> RALL;
+}

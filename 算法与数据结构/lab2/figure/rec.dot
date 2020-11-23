@@ -1,0 +1,37 @@
+digraph main{
+  subgraph PreorderTraversal{
+    judge0[label="is node null?"];
+    print0[label="print the node value"];
+    lson0[label="traversal left son"];
+    rson0[label="traversal right son"];
+
+    preorder_init -> judge0;
+    judge0 -> print0[label="No"];
+    judge0 -> preorder_end[label="Yes"];
+    print0 -> lson0 -> rson0 -> preorder_end;
+  }
+
+  subgraph InorderTraversal{
+    judge1[label="is node null?"];
+    print1[label="print the node value"];
+    lson1[label="traversal left son"];
+    rson1[label="traversal right son"];
+
+    inorder_init -> judge1;
+    judge1 -> lson1[label="No"];
+    judge1 -> inorder_end[label="Yes"];
+    lson1 -> print1 -> rson1 -> inorder_end;
+  }
+
+  subgraph PostorderTraversal{
+    judge2[label="is node null?"];
+    print2[label="print the node value"];
+    lson2[label="traversal left son"];
+    rson2[label="traversal right son"];
+
+    postorder_init -> judge2;
+    judge2 -> lson2[label="No"];
+    judge2 -> postorder_end[label="Yes"];
+    lson2 -> rson2 -> print2 -> postorder_end;
+  }
+}

@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{bookmark}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{colortbl}
+\usepackage{dcolumn}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{xeCJK}
+
+\usetikzlibrary{mindmap,trees}
+
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\setCJKmonofont{SimSun}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setsansfont{GoMono Nerd Font}
+\setmainfont{GoMono Nerd Font}
+\setmonofont[Mapping={}]{GoMono Nerd Font}
+
+\graphicspath{{figures/}}
+\allowdisplaybreaks
+
+\setcounter{page}{1}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\Huge{第三章作业}}
+\end{center}
+
+\section*{3.59}
+用x，y表示p分析：
+\begin{align*}
+  \because p &= x \times y \\
+  &= (2^{ 64} \times x_h + x_l) \times (2 ^ {64} \times y_h + y_l) \\
+  &= 2^{128} * x_h \times y_h + 2^{64} \times (x_h \times y_l + x_l \times y_h)
+  + x_l \times y_l \\
+  \therefore p_l &= x_l * y_l \\
+  p_h &= x_h \times y_l + x_l \times y_h + (x_l \times y_l)_h
+\end{align*}
+
+反汇编代码分析：
+
+\begin{lstlisting}[breaklines=true,captionpos=b,tabsize=2,numbers=left,columns=fullflexible,keepspaces=true]
+# dest in %rdi, x in %rsi, y in %rdx
+store_prod:
+  movq %rdx, %rax     # %rax=y
+  cqto                # expand sign bit of %rax(y) to %rdx
+  # %rdx=y_h
+
+  movq %rsi, %rcx     # %rcx=x
+  sarq $63, %rcx      # %rcx=x >> 63
+  # %rcx=x_h
+
+  imulq %rax, %rcx    # %rcx=x_h*y_l
+  imulq %rsi, %rdx    # %rdx=y_h*x_l
+  addq %rdx, %rcx     # %rcx=x_h*y_l+x_l*y_h
+  mulq %rsi
+  # %rdx:%rax=x_l*y_l,%rax=(x_l*y_l)_l=p_l
+  addq %rcx, %rdx
+  # %rdx=x_h*y_l+x_l*y_h+(x_l*y_l)_h=p_h
+
+  movq %rax, (%rdi)
+  movq %rdx, 8(%rdi)
+  # *dest=p_h:p_l
+  ret
+\end{lstlisting}
+
+\section*{3.63}
+
+\begin{lstlisting}[language=c++,breaklines=true,captionpos=b,tabsize=2,numbers=left,columns=fullflexible,keepspaces=true]
+long switch_prob(long x, long n) {
+  long result = x;
+  switch (n) {
+    case 60:
+    case 62:
+    result = x * 8;
+    break;
+    case 63:
+    result = x / 8;
+    break;
+    case 64:
+    result = x * 15;
+    x = result;
+    case 65:
+    x *= x;
+    default:
+    result = x + 75;
+  }
+  return result;
+}
+\end{lstlisting}
+
+\section*{3.67}
+
+\subsubsection*{A}
+\begin{lstlisting}[basicstyle=\small\ttfamily,extendedchars=false]
+104  +------------------+
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+ 64  +------------------+ <-- %rdi
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+     |                  |
+ 32  +------------------+
+     |         z        |
+ 24  +------------------+
+     |        &z        |
+ 16  +------------------+
+     |         y        |
+  8  +------------------+
+     |         x        |
+  0  +------------------+ <-- %rsp
+\end{lstlisting}
+
+\subsubsection*{B}
+传入了一个\%rsp+64的指针。
+
+\subsubsection*{C}
+通过\%rsp指针加上偏移量。
+
+\subsubsection*{D}
+通过访问\%rsp+64指针加上偏移量。
+
+\subsubsection*{E}
+\begin{lstlisting}[basicstyle=\small\ttfamily,extendedchars=false]
+104  +------------------+
+     |                  |
+     |                  |
+ 88  +------------------+
+     |         z        |
+ 80  +------------------+
+     |         x        |
+ 72  +------------------+
+     |         y        |
+ 64  +------------------+ <-- %rdi
+     |                  |   \
+     |                  |    \
+     |                  |      %rax
+     |                  |
+     |                  |
+     |                  |
+ 32  +------------------+
+     |         z        |
+ 24  +------------------+
+     |        &z        |
+ 16  +------------------+
+     |         y        |
+  8  +------------------+
+     |         x        |
+  0  +------------------+ <-- %rsp
+\end{lstlisting}
+
+eval通过访问\%rsp加上偏移量访问r。
+
+\subsubsection*{F}
+如果把结构作为参数，那么实际传递的会是一个空的位置指针，函数把数据存储在这个位置
+上，同时返回值也是这个指针。
+
+\section*{3.71}
+
+\begin{lstlisting}[language=c++]
+#include <assert.h>
+#include <stdio.h>
+
+#define BUFFER_SIZE
+
+int good_echo() {
+  char buffer[BUFFER_SIZE];
+  if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
+    return EOF;
+  }
+  puts(buffer);
+}
+\end{lstlisting}
+
+\end{document}

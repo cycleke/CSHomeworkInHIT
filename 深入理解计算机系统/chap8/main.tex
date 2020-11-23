@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{bookmark}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{colortbl}
+\usepackage{dcolumn}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{xeCJK}
+
+\usetikzlibrary{mindmap,trees}
+
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\setCJKmonofont{PingFang SC}
+\setCJKmainfont{PingFang SC}
+\setsansfont{GoMono Nerd Font}
+\setmainfont{GoMono Nerd Font}
+\setmonofont[Mapping={}]{GoMono Nerd Font}
+
+\setlength{\parindent}{2em}
+
+\lstset{
+  breaklines=true,
+  breakatwhitespace=false,
+  captionpos=b,
+  tabsize=2,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  columns=fullflexible,
+  frame=shadowbox,
+  keepspaces=true,
+  commentstyle=\color[RGB]{0,128,0},
+  keywordstyle=\color[RGB]{0,0,255},
+  basicstyle=\footnotesize\ttfamily,
+  rulesepcolor=\color{red!20!green!20!blue!20},
+  showstringspaces = false,
+}
+
+\graphicspath{{figures/}}
+\allowdisplaybreaks
+
+\setcounter{page}{1}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\Huge{第八章作业}}
+\end{center}
+
+\section*{8.11}
+4行。
+
+\section*{8.15}
+5行。
+
+\section*{8.19}
+$2^{n}$。
+
+\section*{8.23}
+因为信号是不排队的。handler处理第一个信号时会sleep(1)，
+后面的信号只会有一个pending，其余的都会被取消，所以counter只会为2。
+
+\end{document}

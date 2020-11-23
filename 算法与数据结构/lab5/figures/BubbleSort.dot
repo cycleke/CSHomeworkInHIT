@@ -1,0 +1,20 @@
+digraph {
+  for1_init[label="i = 1"];
+  for1_cond[label="i < n - 1"];
+  for1_iter[label="inc i"];
+  for2_init[label="j = n - 1"];
+  for2_cond[label="j >= i + 1"];
+  for2_iter[label="dec j"];
+  judge[label="a[j] < a[j - 1]"];
+  swap[label="swap a[j] and a[j - 1]"];
+
+  for1_init -> for1_cond;
+  for1_cond -> for2_init[label="Yes"];
+  for1_iter -> for1_cond;
+  for2_init -> for2_cond[label="Yes"];
+  for2_cond -> judge[label="Yes"];
+  for2_cond -> for1_iter[label="No"]
+  judge -> swap[label="Yes"];
+  judge -> for2_iter[label="No"];
+  swap -> for2_iter -> for2_cond;
+}

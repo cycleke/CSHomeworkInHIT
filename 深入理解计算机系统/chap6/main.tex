@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{bookmark}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{colortbl}
+\usepackage{dcolumn}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{xeCJK}
+
+\usetikzlibrary{mindmap,trees}
+
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\setCJKmonofont{PingFang SC}
+\setCJKmainfont{PingFang SC}
+\setsansfont{GoMono Nerd Font}
+\setmainfont{GoMono Nerd Font}
+\setmonofont[Mapping={}]{GoMono Nerd Font}
+
+\setlength{\parindent}{2em}
+
+\lstset{
+  breaklines=true,
+  breakatwhitespace=false,
+  captionpos=b,
+  tabsize=2,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  columns=fullflexible,
+  frame=shadowbox,
+  keepspaces=true,
+  commentstyle=\color[RGB]{0,128,0},
+  keywordstyle=\color[RGB]{0,0,255},
+  basicstyle=\footnotesize\ttfamily,
+  rulesepcolor=\color{red!20!green!20!blue!20},
+  showstringspaces = false,
+}
+
+\graphicspath{{figures/}}
+\allowdisplaybreaks
+
+\setcounter{page}{1}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\Huge{第六章作业}}
+\end{center}
+
+\section*{6.23}
+\[T_{avg\ seek} = 4ms\]
+\[T_{avg\ rotation} = \frac{1}{2} \times \frac{1}{RPM} \times \frac{60s}{1min}
+  \approx 2ms \]
+\[T_{avg\ transfer} = \frac{1}{RPM} \times \frac{1}{\text{（平均扇区数/磁道）}}
+  \times \frac{60s}{1min} = 0.005ms\]
+\[T_{access}=T_{avg\ seek}+T_{avg\ rotation}+T_{avg\ transfer} \approx 6.005ms\]
+
+\section*{6.27}
+\subsection*{A.}
+t = 0x45 = 0b01000101, s = 0b001, b = ??。
+所以可以命中的地址格式为 0 1000 1010 01??，内存地址范围为0x08A4 \textasciitilde
+0x08A7。
+
+t = 0x38同理有内存地址范围为0x0704 \textasciitilde 0x0707。
+\subsection*{B.}
+同理有内存地址范围为0x1238 \textasciitilde 0x123B。
+
+\section*{6.31}
+\subsection*{A.}
+\begin{tabular}[htbp!]{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\
+  \hline
+  0 &  0 &  1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 0 \\
+  \hline
+\end{tabular}
+\subsection*{B.}
+\begin{tabular}[htbp!]{|c|c|}
+  \hline
+  参数 & 值 \\
+  \hline
+  高速缓存块偏移(CO) & 0x02 \\
+  \hline
+  高速缓存组索引(CI) & 0x06 \\
+  \hline
+  高速缓存标记(CT) & 0x38 \\
+  \hline
+  高速是否命中？(是/否) & 是 \\
+  \hline
+  返回的高速缓存字节 & 0xEB \\
+  \hline
+\end{tabular}
+
+\section*{6.35}
+\begin{tabular}[htbp!]{|c|c|c|c|c|}
+  \multicolumn{5}{c}{dst数组} \\
+  \hline
+  & 列0 & 列1 & 列2 & 列3 \\
+  \hline
+  行0 & m & h & h & h \\
+  \hline
+  行1 & m & h & h & h \\
+  \hline
+  行2 & m & h & h & h \\
+  \hline
+  行3 & m & h & h & h \\
+  \hline
+\end{tabular}
+\begin{tabular}[htbp!]{|c|c|c|c|c|}
+  \multicolumn{5}{c}{src数组} \\
+  \hline
+  & 列0 & 列1 & 列2 & 列3 \\
+  \hline
+  行0 & m & h & h & h \\
+  \hline
+  行1 & m & h & h & h \\
+  \hline
+  行2 & m & h & h & h \\
+  \hline
+  行3 & m & h & h & h \\
+  \hline
+\end{tabular}
+
+\section*{6.39}
+\subsection*{A.}
+总写数=16*16*4=1024
+\subsection*{B.}
+sizeof(point\_color)==16，B=32，所以第一个c无法命中，剩下的m、y、k均命中。步长为
+16*16=256，所以square[j+1][i]不会命中，也不会覆盖上一次写入的高速缓存。
+2048/256=8，所以square[j+8][i]会覆盖square[j][i]写入的高速缓存，所以
+square[j][i+1]有不会命中。
+
+不命中写总数$=\frac{1}{4} \times 16 * 16 * 4 = 256$
+\subsection*{C.}
+不命中率$=\frac{1}{4}$。
+
+\section*{6.43}
+由于每行四个字节，而sizeof(int)==4，所以不命中率为100\%。
+\end{document}

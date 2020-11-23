@@ -1,0 +1,25 @@
+digraph {
+  //rankdir=LR;
+  subgraph body{
+    label="body";
+    init[label="clear visited mark"];
+    loop1[label="for node unvisited"];
+    func[label="call function dfs"];
+
+    init -> loop1 -> func;
+  };
+
+  subgraph dfs {
+    label="dfs";
+    print[label="print node"];
+    marknode[label="mark node visited"];
+    loop2[label="for node unvisited and\nconnected with current node"];
+    call[label="call dfs for new node"];
+
+    print -> marknode -> loop2 -> call -> print;
+  };
+
+  edge[constraint=false];
+  func -> print[style=dotted];
+
+}

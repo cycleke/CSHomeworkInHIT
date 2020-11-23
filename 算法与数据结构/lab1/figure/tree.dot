@@ -1,0 +1,105 @@
+digraph tree {
+  rankdir=TB;
+  subgraph{
+    { rank=min; root[label="b1+b2+b3+b4?b5+b6+b7+b8"]; }
+    {
+      rank=same;
+      G[label="b1+b2+b9?b3+b4+b8"];
+      E[label="b1+b2+b3?b9+b10+b11"];
+      L[label="b5+b6+b9?b4+b7+b8"];
+    }
+
+    {
+      rank=same;
+      GG[label="b1?b2"];
+      GE[label="b5?b6"];
+      GL[label="b3?b4"];
+
+      EG[label="b9?b10"];
+      EE[label="b1?b12"];
+      EL[label="b9?b10"];
+
+      LG[label="b5?b6"];
+      LE[label="b1?b2"];
+      LL[label="b7?b8"];
+    }
+
+    {
+      rank=max;
+      GGG[label="b1-H"];
+      GGE[label="b8-L"];
+      GGL[label="b2-H"];
+
+      GEG[label="b6-L"];
+      GEE[label="b7-L"];
+      GEL[label="b5-L"];
+
+      GLG[label="b3-H"];
+      GLL[label="b4-H"];
+
+      EGG[label="b10-L"];
+      EGE[label="b11-L"];
+      EGL[label="b9-L"];
+
+      EEG[label="b12-L"];
+      EEL[label="b12-H"];
+
+      ELG[label="b9-H"];
+      ELE[label="b11-H"];
+      ELL[label="b10-H"];
+
+      LGG[label="b5-H"];
+      LGE[label="b4-L"];
+      LGL[label="b6-H"];
+
+      LEG[label="b2-L"];
+      LEE[label="b3-L"];
+      LEL[label="b1-L"];
+
+      LLG[label="b7-H"];
+      LLL[label="b8-H"];
+    }
+
+    root -> G[label=">"];
+    root -> E[label="="];
+    root -> L[label="<"];
+
+    G -> GG[label=">"];
+    G -> GE[label="="];
+    G -> GL[label="<"];
+    E -> EG[label=">"];
+    E -> EE[label="="];
+    E -> EL[label="<"];
+    L -> LG[label=">"];
+    L -> LE[label="="];
+    L -> LL[label="<"];
+
+    GG -> GGG[label=">"];
+    GG -> GGE[label="="];
+    GG -> GGL[label="<"];
+    GE -> GEG[label=">"];
+    GE -> GEE[label="="];
+    GE -> GEL[label="<"];
+    GL -> GLG[label=">"];
+    GL -> GLE[label="="];
+    GL -> GLL[label="<"];
+    EG -> EGG[label=">"];
+    EG -> EGE[label="="];
+    EG -> EGL[label="<"];
+    EE -> EEG[label=">"];
+    EE -> EEE[label="="];
+    EE -> EEL[label="<"];
+    EL -> ELG[label=">"];
+    EL -> ELE[label="="];
+    EL -> ELL[label="<"];
+    LG -> LGG[label=">"];
+    LG -> LGE[label="="];
+    LG -> LGL[label="<"];
+    LE -> LEG[label=">"];
+    LE -> LEE[label="="];
+    LE -> LEL[label="<"];
+    LL -> LLG[label=">"];
+    LL -> LLE[label="="];
+    LL -> LLL[label="<"];
+  }
+}

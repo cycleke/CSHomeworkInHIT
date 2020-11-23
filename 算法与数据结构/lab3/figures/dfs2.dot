@@ -1,0 +1,33 @@
+digraph {
+  subgraph body{
+    label="body";
+    init[label="clear visited mark"];
+    loop1[label="for node unvisited"];
+    func[label="call function dfs"];
+
+    init -> loop1 -> func;
+  };
+
+  subgraph dfs {
+    label="dfs";
+    printroot[label="print root"];
+    markroot[label="mark root visited"];
+    pushroot[label="push root into stack"];
+    top[label="get top of stack"];
+    expandable[label="is the node able to expand?"];
+    expand[label="get new node"];
+    printnode[label="print node"];
+    marknode[label="mark node visited"];
+    pushnode[label="push node into stack"];
+
+    printroot -> markroot -> pushroot -> top -> expandable;
+    expandable -> expand[label="Yes"];
+    expandable -> top[label="No"];
+    expand -> printnode -> marknode -> pushnode -> top;
+
+  };
+
+  edge[constraint=false];
+  func -> printroot[style=dotted];
+
+}

@@ -1,0 +1,30 @@
+digraph {
+  for1_init[label="i = 0"];
+  for1_cond[label="i < n"];
+  for1_iter[label="inc i"];
+  for2_init[label="j = i + 1"];
+  for2_cond[label="j < n"];
+  for2_iter[label="inc j"];
+  loop[label="min_pos = i"];
+  judge1[label="a[j] < a[min_pos]"];
+  update[label="min_pos = j"];
+  judge2[label="min_pos != i"];
+  swap[label="swap a[min_pos] and a[i]"];
+
+  for1_init -> for1_cond;
+  for1_cond -> loop[label="Yes"];
+  for1_iter -> for1_cond;
+  for2_init -> for2_cond;
+  for2_cond -> judge1[label="Yes"];
+  for2_iter -> for2_cond;
+
+  loop -> for2_init;
+  judge1 -> update[label="Yes"];
+  judge1 -> for2_iter[label="No"];
+  update -> for2_iter;
+
+  for2_cond -> judge2[label="No"];
+  judge2 -> swap[label="Yes"];
+  judge2 -> for1_iter[label="No"];
+  swap -> for1_iter;
+}

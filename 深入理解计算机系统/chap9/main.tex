@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{bookmark}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{colortbl}
+\usepackage{dcolumn}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{xeCJK}
+
+\usetikzlibrary{mindmap,trees}
+
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\setCJKmonofont{PingFang SC}
+\setCJKmainfont{PingFang SC}
+\setsansfont{GoMono Nerd Font}
+\setmainfont{GoMono Nerd Font}
+\setmonofont[Mapping={}]{GoMono Nerd Font}
+
+\setlength{\parindent}{2em}
+
+\lstset{
+  breaklines=true,
+  breakatwhitespace=false,
+  captionpos=b,
+  tabsize=2,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  columns=fullflexible,
+  frame=shadowbox,
+  keepspaces=true,
+  commentstyle=\color[RGB]{0,128,0},
+  keywordstyle=\color[RGB]{0,0,255},
+  basicstyle=\footnotesize\ttfamily,
+  rulesepcolor=\color{red!20!green!20!blue!20},
+  showstringspaces = false,
+}
+
+\graphicspath{{figures/}}
+\allowdisplaybreaks
+
+\setcounter{page}{1}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\Huge{第九章作业}}
+\end{center}
+
+\section*{9.11}
+\subsection*{A.虚拟地址格式}
+\begin{tabular}[htbp!]{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \toprule
+  13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\
+  \midrule
+  0 &  0 &  0 &  0 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+  \bottomrule
+\end{tabular}
+
+\subsection*{B.地址翻译}
+\begin{tabular}[htbp!]{|c|c|}
+  \toprule
+  参数 & 值 \\\midrule
+  VPN & 0x9 \\\midrule
+  TLB索引 & 0x1 \\\midrule
+  TLB标记 & 0x2 \\\midrule
+  TLB命中 & 否 \\\midrule
+  缺页 & 否 \\\midrule
+  PPN & 0x17 \\\bottomrule
+\end{tabular}
+
+\subsection*{C.物理地址格式}
+\begin{tabular}[htbp!]{|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \toprule
+  11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\
+  \midrule
+  0 &  1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+  \bottomrule
+\end{tabular}
+
+\subsection*{D.物理地址引用}
+\begin{tabular}[htbp!]{|c|c|}
+  \toprule
+  参数 & 值 \\\midrule
+  字节偏移 & 0x0 \\\midrule
+  缓存索引 & 0xf \\\midrule
+  缓存标记 & 0x17 \\\midrule
+  缓存命中 & 否 \\\midrule
+  返回的缓存字节 & - \\\bottomrule
+\end{tabular}
+
+\section*{9.15}
+\begin{tabular}[htbp!]{|c|c|c|}
+  \toprule
+  请求 & 块大小（十进制） & 块头部（十六进制） \\\midrule
+  malloc(3) & 8 & 0x9 \\\midrule
+  malloc(11) & 16 & 0x11 \\\midrule
+  malloc(20) & 24 & 0x19 \\\midrule
+  malloc(21) & 24 & 0x19 \\\bottomrule
+\end{tabular}
+
+\section*{9.19}
+1. a; 2. d; 3. b;
+
+\end{document}
