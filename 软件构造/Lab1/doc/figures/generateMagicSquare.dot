@@ -1,0 +1,30 @@
+digraph {
+  node[shape=box];
+
+  start[style=rounded,label="传入n"];
+  checkOdd[shape=diamond,label="是否是正奇数？"];
+  error[style=rounded,label="打印对应错误，返回假值"];
+  initPos[label="初始化：坐标置于首行行中间，计数器置为1"];
+  loopCheck[shape=diamond,label="计数器是否小于等于n*n"];
+  assign[label="将计数器至于坐标对应位置中"];
+  modCheck[shape=diamond,label="计数器是否为n的倍数"];
+  crossMov[label="坐标右上方移动（坐标可循环）"];
+  downMov[label="坐标下移"];
+  add[label="计数器自加一"];
+  printToFile[shape=parallelogram,label="输出到文件"];
+  {rank=max; correct[style=rounded,label="返回真值"];}
+
+  start -> checkOdd;
+  checkOdd -> error[label="No"];
+  checkOdd -> initPos[label="Yes"];
+  initPos -> loopCheck;
+  loopCheck -> assign[label="Yes"];
+  loopCheck -> printToFile[label="No"];
+  assign -> modCheck;
+  modCheck -> downMov[label="Yes"];
+  modCheck -> crossMov[label="No"];
+  downMov -> add;
+  crossMov -> add;
+  add -> loopCheck;
+  printToFile -> correct;
+}

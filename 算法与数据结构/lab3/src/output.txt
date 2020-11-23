@@ -1,0 +1,96 @@
+Input the graph file(default: input.txt):Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Recursive algorithm?(0/1)
+Input the graph storage(list/array, default: list):
+DFS Sequence: 1 3 4 5 2 6 12 7 10 8 9 11 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Recursive algorithm?(0/1)
+Input the graph storage(list/array, default: list):
+DFS Sequence: 1 2 4 5 3 6 7 8 10 12 9 11 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Recursive algorithm?(0/1)
+Input the graph storage(list/array, default: list):
+DFS Sequence: 1 3 4 5 2 6 12 7 10 8 9 11 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Recursive algorithm?(0/1)
+Input the graph storage(list/array, default: list):
+DFS Sequence: 1 2 4 5 3 6 7 8 10 12 9 11 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Input the graph storage(list/array, default: list):
+BFS Sequence: 1 3 2 4 5 6 12 7 10 8 9 11 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Input the graph storage(list/array, default: list):
+BFS Sequence: 1 2 3 4 5 6 7 12 8 10 9 11 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Display AdjArray: n = 12
+0 1 1 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 
+0 1 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 1 
+0 0 0 0 0 0 0 1 0 1 0 0 
+0 0 0 0 0 0 1 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 1 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.
+Display AdjList: n = 12
+3 2 
+4 
+4 2 
+5 
+
+12 7 
+10 8 
+10 7 
+12 10 
+1 
+
+
+Input the instruction:
+1. Print DFS spanning tree.
+2. Print BFS spanning tree.
+3. Convert adjacency list to array.
+4. Convert adjacency array to list.
+-1. Exit.

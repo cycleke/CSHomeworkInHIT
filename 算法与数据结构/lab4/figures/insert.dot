@@ -1,0 +1,18 @@
+digraph {
+  func[label="insert value into the subtree of node"];
+  none[label="return new node with value"];
+  left[label="insert into leftson"];
+  right[label="insert into rightson"];
+  found[label="return this node"];
+  rebalance[label="rebalance node"];
+
+  func -> left[label="value \n<\n node.value"];
+  func -> right[label="value \n>\n node.value"];
+  func -> found[label="value \n==\n node.value"];
+  func -> none[label="node \n==\n none"];
+
+  left -> func[style=dotted];
+  right -> func[style=dotted];
+  left -> rebalance;
+  right -> rebalance;
+}

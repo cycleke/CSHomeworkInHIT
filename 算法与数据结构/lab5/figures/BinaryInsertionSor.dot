@@ -1,0 +1,32 @@
+digraph {
+  init[label="i = 1"];
+  for_cond[label="i < n"];
+  for_add[label="inc i"];
+  insert[label="insert key into position a[l]"];
+
+  subgraph bin {
+    bin_init[label="key = a[i], l = 0, r = i - 1"];
+    bin_cond[label="l < r"];
+    bin_mid[label="mid = (l + r) / 2"];
+    bin_jug[label="a[mid] > key"];
+    bin_l[label="l = mid + 1"];
+    bin_r[label="r = mid - 1"];
+
+    bin_init -> bin_cond;
+    bin_cond -> bin_mid[label="Yes"];
+    bin_cond -> insert[label="No"];
+    bin_mid -> bin_jug;
+    bin_jug -> bin_l[label="No"];
+    bin_jug -> bin_r[label="Yes"];
+
+    bin_l -> bin_cond;
+    bin_r -> bin_cond;
+
+    label = "Binary Search";
+    graph[style=dotted];
+  }
+
+  init -> for_cond;
+  for_cond -> bin_init[label="Yes"];
+  insert -> for_add -> for_cond;
+}

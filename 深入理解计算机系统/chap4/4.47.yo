@@ -1,0 +1,53 @@
+0x000:                      | .pos 0
+0x000: 30f40002000000000000 |   irmovq stack, %rsp
+0x00a: 803800000000000000   |   call main
+0x013: 00                   |   halt
+                            | 
+                            | # Array of 4 elements
+0x018:                      | .align 8
+0x018:                      | begin:
+0x018: 0200000000000000     |   .quad 0x0000000000000002
+0x020: 0400000000000000     |   .quad 0x0000000000000004
+0x028: 0100000000000000     |   .quad 0x0000000000000001
+0x030:                      | end:
+0x030: 0300000000000000     |   .quad 0x0000000000000003
+                            | 
+0x038:                      | main:
+0x038: 30f71800000000000000 |   irmovq begin, %rdi
+0x042: 30f63000000000000000 |   irmovq end, %rsi
+0x04c: 805600000000000000   |   call bubble
+0x055: 90                   |   ret
+                            | 
+                            | # void bubble(long *begin, long *end)
+                            | # begin in %rdi, end in %rsi
+0x056:                      | bubble:
+0x056: 70c400000000000000   |   jmp L2
+0x05f:                      | L4:
+0x05f: 50900800000000000000 |   mrmovq 8(%rax), %r9
+0x069: 50a00000000000000000 |   mrmovq (%rax), %r10
+0x073: 2098                 |   rrmovq %r9, %r8
+0x075: 61a8                 |   subq %r10, %r8
+0x077: 759400000000000000   |   jge L3
+0x080: 40a00800000000000000 |   rmmovq %r10, 8(%rax)
+0x08a: 40900000000000000000 |   rmmovq %r9, (%rax)
+0x094:                      | L3:
+0x094: 30f80800000000000000 |   irmovq $8, %r8
+0x09e: 6080                 |   addq %r8, %rax
+0x0a0: 70ab00000000000000   |   jmp L5
+0x0a9:                      | L6:
+0x0a9: 2070                 |   rrmovq %rdi, %rax
+0x0ab:                      | L5:
+0x0ab: 2068                 |   rrmovq %rsi, %r8
+0x0ad: 6108                 |   subq %rax, %r8
+0x0af: 765f00000000000000   |   jg L4
+0x0b8: 30f80800000000000000 |   irmovq $8, %r8
+0x0c2: 6186                 |   subq %r8, %rsi
+0x0c4:                      | L2:
+0x0c4: 2068                 |   rrmovq %rsi, %r8
+0x0c6: 6178                 |   subq %rdi, %r8
+0x0c8: 76a900000000000000   |   jg L6
+0x0d1: 90                   | 	ret
+                            | 
+                            | 
+0x200:                      | .pos 0x200
+0x200:                      | stack:

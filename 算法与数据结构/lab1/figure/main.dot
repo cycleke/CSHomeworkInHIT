@@ -1,0 +1,27 @@
+digraph main{
+  rankdir=TB;
+  subgraph {
+    node[shape=box,height=.1];
+    {rank=min; init[label="Init"];}
+    {rank=same; getline;}
+    {rank=same; ParseTokenfromInfix;}
+    {rank=same; Infix2Postfix;}
+    {rank=same; is_assignment[label="is assignment?"];}
+    {
+      rank=same;
+      EvalPostfix;
+      del_tokens[label="Delete additional tokens"];
+    }
+    {rank=same; AssignVar[label="Var = EvalPostfix"];}
+    {rank=max; end[label="End"];}
+
+    init -> getline
+      getline -> ParseTokenfromInfix [label="Get New Line"]
+      getline -> end [label="EOF"]
+      ParseTokenfromInfix -> Infix2Postfix -> is_assignment;
+    is_assignment -> del_tokens[label=Yes];
+    is_assignment -> EvalPostfix[label=No];
+    del_tokens -> AssignVar -> getline;
+    EvalPostfix -> getline;
+  }
+}

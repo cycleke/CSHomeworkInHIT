@@ -1,0 +1,30 @@
+digraph {
+  func[label="erase the node with value in the subtree"];
+  none[label="return this node"];
+  left[label="erase in leftson"];
+  right[label="erase in rightson"];
+  found[label="leftson or rightson equal to none?"];
+  swap1[label="swap the node with the other son"];
+  swap2[label="find the prev of node in the subtree\n(the rightson must be none)"];
+  assign[label="set the node's value with prev's value"];
+  erase[label="erase the prev node"];
+  rebalance[label="rebalance node"];
+
+  func -> left[label="value \n<\n node.value"];
+  func -> right[label="value \n>\n node.value"];
+  func -> found[label="value \n==\n node.value"];
+  func -> none[label="node \n==\n none"];
+
+  left -> func[style=dotted];
+  right -> func[style=dotted];
+  erase -> func[style=dotted];
+
+  found -> swap1[label="Yes"];
+  found -> swap2[label="No"];
+  swap2 -> assign -> erase;
+
+  swap1 -> rebalance;
+  erase -> rebalance;
+  left -> rebalance;
+  right -> rebalance;
+}

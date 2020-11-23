@@ -1,0 +1,15 @@
+digraph {
+  gen_step[label="find the max element\ncalculate the step"];
+  for_init[label="radix = 1, i = 0"];
+  for_cond[label="i < step"];
+  for_iter[label="inc i\nradix *= BASE"];
+  clear[label="clear the count array"];
+  count[label="for x in array, inc count[x / radix % BASE]"];
+  pre_sum[label="for j from 0 to BASE - 1\ncount[j] += count[j - 1]"];
+  place[label="for j from n - 1 downto 0\ntemp[--count[a[j] / radix % BASE]] = a[j]"]
+  copy[label="copy temp to a"];
+
+  gen_step -> for_init -> for_cond;
+  for_cond -> clear[label="Yes"];
+  clear -> count -> pre_sum -> place -> copy -> for_iter -> for_cond;
+}

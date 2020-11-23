@@ -1,0 +1,405 @@
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by bubble sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by quick sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by selection sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by heap sort: 1 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by radix sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by bubble sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by quick sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by selection sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by heap sort: 0 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by radix sort: 1 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 5 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 12 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by bubble sort: 22 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by quick sort: 6 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by selection sort: 21 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by heap sort: 8 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by radix sort: 5 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 367 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 528 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by bubble sort: 1349 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by quick sort: 94 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by selection sort: 1829 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by heap sort: 112 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by radix sort: 69 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 16460 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 20989 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by bubble sort: 140335 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by quick sort: 635 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by selection sort: 146699 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by heap sort: 1150 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by radix sort: 324 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 1609426 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 2563364 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by bubble sort: 22206865 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by quick sort: 9140 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by selection sort: 17826614 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by heap sort: 18718 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by radix sort: 4402 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by insertion sort: 262441812 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:Time taken by binary insertion sort: 306383351 microseconds.
+Input the size of the array to be sorted(-1 to exit):Choose the sort algorithm:
+1. Insertion Sort.
+2. Binary Insertion Sort.
+3. Bubble Sort.
+4. Quick Sort.
+5. Selection Sort.
+6. Heap Sort.
+7. Radix Sort.
+Input:

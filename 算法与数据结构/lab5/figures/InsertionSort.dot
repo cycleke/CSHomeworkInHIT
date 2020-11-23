@@ -1,0 +1,17 @@
+digraph {
+  { rank=min; init[label="i = 1"]; }
+  for_cond[label="i < n"];
+  loop1[label="key = a[i], j = i - 1"];
+  while_cond[label="j >= 0 && key < a[j]"];
+  loop2[label="a[j + 1] = a[j], dec j"];
+  loop3[label="a[j + 1] = key"];
+  for_add[label="inc i"];
+
+  init -> for_cond;
+  for_cond -> loop1[label="Yes"];
+  loop1 -> while_cond;
+  while_cond -> loop2[label="Yes"];
+  while_cond -> loop3[label="No"];
+  loop2 -> while_cond;
+  loop3 -> for_add -> for_cond;
+}

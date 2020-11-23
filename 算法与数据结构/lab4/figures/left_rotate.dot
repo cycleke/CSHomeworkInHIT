@@ -1,0 +1,11 @@
+digraph {
+  label="\n\nleft rotate node y\n";
+
+  init[label="x ← y.rightson\ntemp ← x.leftson"];
+  change[label="x.leftson ← y\ny.rightson ← temp"];
+  racty[label="maintain the height of y"];
+  ractx[label="maintain the height of x"];
+  return[label="return the pointer x"];
+
+  init -> change -> racty -> ractx -> return;
+}

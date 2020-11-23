@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="480" height="480">
+<defs>
+<pattern id="pattern" width=".25" height=".25" patternContentUnits="objectBoundingBox">
+<rect width=".25" height=".25" fill="#d18b47"/>
+<rect width=".125" height=".125" fill="#ffce9e"/>
+<rect x=".125" y=".125" width=".125" height=".125" fill="#ffce9e"/>
+</pattern>
+</defs>
+<rect width="8" height="8" fill="url(#pattern)"/>
+</svg>

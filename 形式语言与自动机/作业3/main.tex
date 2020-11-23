@@ -1,0 +1,335 @@
+% !Tex Program = xelatex
+% -*-coding: utf-8 -*-
+\documentclass[12pt,onecolumn]{article}
+
+% 中文
+\usepackage[BoldFont,SlantFont]{xeCJK}
+\xeCJKsetemboldenfactor{1}%只对随后定义的CJK字体有效
+\setCJKfamilyfont{hei}{SimHei}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{song}{SimSun}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{fs}{FangSong}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{li}{LiSu}
+\setCJKfamilyfont{xw}{STXinwei}
+\setCJKmainfont{SimSun}
+
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows 自带simsun.ttf)
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows 自带simfs.ttf)
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows 自带simkai.ttf)
+\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
+\newcommand{\xw}{\CJKfamily{xw}}        % 隶书   (Windows自带simli.ttf)
+
+% \AmSTeX\ 宏包，用来排出更加漂亮的公式。
+\usepackage{amsmath}
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{amssymb}
+% 添加字体
+\usepackage[defaultsups]{newtxtext}
+\usepackage{newtxmath}
+\usepackage{courier}
+% 图形支持宏包
+\usepackage{graphicx}
+% 插入pdf
+\usepackage{pdfpages}
+\includepdfset{fitpaper=true}
+% 更好的列表环境。
+\usepackage{enumitem}       %使用enumitem宏包,改变列表项的格式
+\usepackage{enumerate}
+\usepackage{environ}
+% 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
+\usepackage[bottom,perpage,hang]{footmisc}
+\raggedbottom
+% 脚注格式。
+\usepackage{pifont}
+% 表格控制
+\usepackage{longtable}
+\usepackage{booktabs}
+% 参考文献引用宏包
+\usepackage[sort&compress]{natbib}
+% 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
+\usepackage{hyperref}
+\hypersetup{
+	CJKbookmarks=true,
+	linktoc=all,
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	breaklinks=true,
+	colorlinks=false,
+	plainpages=false,
+	pdfborder=0 0 0}
+% 设置 url 样式，与上下文一致
+\urlstyle{same}
+% 版芯设置
+\usepackage{geometry}
+\geometry{
+	centering,
+	text={150true mm,236true mm},
+	left=30true mm,
+	head=5true mm,
+	headsep=2true mm,
+	footskip=0true mm,
+	foot=5.2true mm
+}
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+\usepackage{fancyhdr}
+% 其他包，表格、数学符号包
+\usepackage{tabularx}
+\usepackage{varwidth}
+% 此处changepage环境用来控制索引页面的左右边距，规范中给出的示例的边距要大于正文。
+\usepackage{changepage}
+% 多栏结构在文中用begin{multicols}{2}end{multicols}
+\usepackage{multicol,multienum}
+% 允许上一个section的浮动图形出现在下一个section的开始部分,还提供\FloatBarrier命
+% 令,使所有未处理的浮动图形立即被处理
+\usepackage[below]{placeins}
+% 支持子图 %centerlast 设置最后一行是否居中
+\usepackage{subfigure}
+% 支持双语标题
+\usepackage[subfigure]{ccaption}
+% 根据我工规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
+\renewcommand\normalsize{%
+	% \@setfontsize\normalsize{12bp}{\ifhit@glue 20.50398bp \@plus 2.83465bp \@minus 0bp\else 20.50398bp\fi}%
+	\abovedisplayskip=8pt
+	\abovedisplayshortskip=8pt
+	\belowdisplayskip=\abovedisplayskip
+	\belowdisplayshortskip=\abovedisplayshortskip}
+% 根据习惯定义字号。用法：\cs{hit@def@fontsize}\marg{字号名称}\marg{磅数}避免了
+% 字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+\def\hit@def@fontsize#1#2{%
+	\expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+		\fontsize{#2}{##1\dimexpr #2}\selectfont}}
+\hit@def@fontsize{dachu}{58bp}
+\hit@def@fontsize{chuhao}{42bp}
+\hit@def@fontsize{xiaochu}{36bp}
+\hit@def@fontsize{yihao}{26bp}
+\hit@def@fontsize{xiaoyi}{24bp}
+\hit@def@fontsize{erhao}{22bp}
+\hit@def@fontsize{xiaoer}{18bp}
+\hit@def@fontsize{sanhao}{16bp}
+\hit@def@fontsize{xiaosan}{15bp}
+\hit@def@fontsize{sihao}{14bp}
+\hit@def@fontsize{banxiaosi}{13bp}
+\hit@def@fontsize{xiaosi}{12bp}
+\hit@def@fontsize{dawu}{11bp}
+\hit@def@fontsize{wuhao}{10.5bp}
+\hit@def@fontsize{xiaowu}{9bp}
+\hit@def@fontsize{liuhao}{7.5bp}
+\hit@def@fontsize{xiaoliu}{6.5bp}
+\hit@def@fontsize{qihao}{5.5bp}
+\hit@def@fontsize{bahao}{5bp}
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+\setlist{nosep}
+% 允许太长的公式断行、分页等。
+\allowdisplaybreaks[4]
+\predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
+\postdisplaypenalty=0
+% 公式编号设置
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\hei}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem*{proof}{证明}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theoremseparator{}
+\newtheorem{assumption}{假设}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{exercise}{练习}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{remark}{注释}[section]
+\newtheorem{problem}{问题}[section]
+\newtheorem{conjecture}{猜想}[section]
+\newtheorem{solution}{解}[section]
+% 各种单位
+\usepackage{siunitx}
+\sisetup{group-minimum-digits=4, group-separator= \hspace{0.25em}}
+\sisetup{detect-weight,detect-mode,detect-family}
+% 处理数学公式中的黑斜体的宏包
+\usepackage{bm}
+% 不同于 \mathcal \mathfrak 之类的英文花体字体
+\usepackage{mathrsfs}
+% 支持彩色
+\usepackage{xcolor}
+\definecolor{colorzero}{rgb}{0, 0, 0}
+\definecolor{colorone}{rgb}{1, 0, 0}
+\definecolor{colortwo}{rgb}{0, 0, 1}
+\definecolor{colorthree}{rgb}{0, 1, 0}
+% 图形和表格的控制旋转
+\usepackage{rotating}
+% 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
+% 生成算法列表。
+\usepackage[algoruled,linesnumbered]{algorithm2e}
+% 排版源码所使用的环境。
+\usepackage{listings}
+\lstset{
+	breaklines  = true,
+	captionpos  = b,
+	tabsize     = 2,
+	numbers     = left,
+	columns     = flexible,
+	keepspaces  = true,
+	% commentstyle = \color[RGB]{0,128,0},
+	% keywordstyle = \color[RGB]{0,0,255},
+	basicstyle   = \small\ttfamily,
+	rulesepcolor = \color{red!20!green!20!blue!20},
+	showstringspaces = false,
+}
+
+% 作图
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+% 首行缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage{float}
+\usepackage{diagbox}
+
+% 最后定义一些常见的数学公式样式。
+\newcommand{\theVector}[1]{\bm{#1}}
+\newcommand{\theMatrix}[1]{\mathbb{#1}}
+\newcommand{\theSet}[1]{\mathcal{#1}}
+\newcommand{\theDirected}[1]{{\overrightarrow{#1}}}
+\newcommand{\theUndirected}[1]{{\overline{#1}}}
+\newcommand{\theNetwork}[1]{\mathscr{#1}}
+\newcommand{\theNode}[1]{{\text{#1}}}
+\newcommand{\theDirectedEdge}[2]{{\overrightarrow{{#1}{#2}}}}
+\newcommand{\theUndirectedEdge}[2]{{\overline{{#1}{#2}}}}
+
+\graphicspath{{figures/}}
+
+\pagestyle{fancy}
+\fancyhead[L]{\song\xiaowu[0]{哈尔滨工业大学}}
+\fancyhead[R]{\song\xiaowu[0]{形式语言与自动机}}
+\fancyfoot[C]{\xiaowu-~\thepage~-}
+
+% \renewcommand{\thesection}{}
+% \renewcommand{\thesubsection}{}
+\renewcommand{\today}{\number\year{年}\number\month{月}\number\day{日}}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+\title{形式语言与自动机~作业三}
+\author{cycleke}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section{第一题}
+Design context-free grammars for the following languages:
+\subsection{(a)}
+The set $\{a^i b^j c^k | i \neq j~or~j \neq k\}$, that is,
+the set of strings of a's followed by b's followed by c's,
+such that there are either a different number of a's and b's
+or a different number of b's and c's, or both.
+\begin{solution}
+ 我们定义一个 CFG $G = (\{S, A, B, C, D, E\}, \{a, b, c\}, P, S)$，其中$P$为
+ \begin{align*}
+ S & \to ADC | DBC | ABE | AEC | AD | DB | BE | EC \\
+ A & \to aA | a                                    \\
+ B & \to bB | b                                    \\
+ C & \to cC | c                                    \\
+ D & \to aDb | \varepsilon                         \\
+ E & \to bEc | \varepsilon
+ \end{align*}
+
+ 其中$A, B, C$表示各个字符的正闭包，
+ $D$和$E$则分别表示$ab$相等和$bc$相等的字符串，
+ 而我们按照$i, j, k$的关系来生成$S$。
+\end{solution}
+
+\subsection{(b)}
+The set of all strings a's and b's
+that are not of the form $ww$,
+that is, not equal to any string repeated.
+\begin{solution}
+ 我们定义一个 CFG $G = (\{S, A, B\}, \{a, b\}, P, S)$，其中$P$为
+ \begin{align*}
+ S & \to AB | BA | A | B           \\
+ A & \to aAa | aAb | bAa | bAb | a \\
+ B & \to aBa | aBb | bBa | bBb | b \\
+ \end{align*}
+
+ 其中$A, B$表示中心为$a, b$的奇数长度的字符串，
+ 于是我们可以使用$A, B$来表示奇数长度的串
+ 而对于偶数长度的串，
+ 我们利用$AB, BA$来构造，
+ 而$A，B$的中心不同
+ 所以他们的连接一定不是回文串。
+\end{solution}
+
+\subsection{(c)}
+The set of all strings with twice as many 0's as 1's.
+\begin{solution}
+ 我们定义一个 CFG $G = (\{S\}, \{0, 1\}, P, S)$，其中$P$为
+ \begin{align*}
+ S \to \varepsilon | 1S00 | 00S1 | 0S1S0 | SS
+ \end{align*}
+\end{solution}
+
+\subsection{(d)}
+$L(00^*11^*22^*00^*11^*22^*00^*11^*22^*)$
+\begin{solution}
+ 我们定义一个 CFG $G = (\{S\}, \{0, 1, 2\}, P, S)$，其中$P$为
+ \begin{align*}
+ S & \to AAA    \\
+ A & \to BCD    \\
+ B & \to 0 | 0B \\
+ C & \to 1 | 1C \\
+ D & \to 2 | 2C
+ \end{align*}
+\end{solution}
+
+\section{第二题}
+Consider the CFG G defined by productions:
+\[ S \to aS | Sb | a | b \]
+Prove by induction on the string length
+that no string in L(G) has ba as a substring.
+\begin{proof}
+ 我们需要证明 $w \in L(G)$，$w$不包含子串$ba$。
+
+ \textbf{基础：}
+ 当$|w| = 1$时，显然$w$不包含子串$ba$。
+
+ \textbf{归纳：}
+ 假设对于所有的$n \le k, w \in L(G), |w| = n$，串$w$均不包含子串 ba 。
+ 对于串$w, |w| = k + 1$，
+ 根据 G 的文法，我们可以分为两种情况
+ \begin{itemize}
+ \item
+ 由$S \to aS$，有$w = as, |s| = k$。
+ 依据归纳假设，$s$不包含子串 ba。
+ 我们只是在$s$头部添加了一个字符 a，
+ 只会产生两种新子串$aa, ab$，
+ 而$aa \neq ba, ab \neq ba$
+ 所以不会产生子串 ba。
+ \item
+ 由$S \to Sb$，有$w = sb, |s| = k$。
+ 依据归纳假设，$s$不包含子串 ba。
+ 我们只是在$s$尾部添加了一个字符 b，
+ 只会产生两种新子串$ab, bb$，
+ 而$ab \neq ba, bb \neq ba$
+ 所以不会产生子串 ba。
+ \end{itemize}
+ 所以对于长度为$k + 1$的串，
+ 它亦不包含子串 ba。
+
+ 综上所述，
+ L(G) 中的字符串不会包含 ba。
+\end{proof}
+\end{document}

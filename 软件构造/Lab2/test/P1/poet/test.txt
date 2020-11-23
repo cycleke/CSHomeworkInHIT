@@ -1,0 +1,3 @@
+alice is now there
+bob is now there
+candy is not there

@@ -1,0 +1,15 @@
+digraph {
+  func[label="find in node"];
+  none[label="return false"];
+  left[label="find in leftson"];
+  right[label="find in rightson"];
+  found[label="return true"];
+
+  func -> left[label="value \n<\n node.value"];
+  func -> right[label="value \n>\n node.value"];
+  func -> found[label="value \n==\n node.value"];
+  func -> none[label="node \n==\n none"];
+
+  left -> func[style=dotted];
+  right -> func[style=dotted];
+}

@@ -1,0 +1,16 @@
+player1:
+  name: "alice"
+  pieces:
+  - name: "Stone"
+    x: 0
+    y: 0
+  - name: "Stone"
+    x: 0
+    y: 2
+  - name: "Stone"
+    x: 2
+    y: 4
+
+player2:
+  name: "bob"
+  pieces: []

@@ -1,0 +1,345 @@
+% !Tex Program = xelatex
+% -*-coding: utf-8 -*-
+\documentclass[12pt,onecolumn]{article}
+
+% 中文
+\usepackage[BoldFont,SlantFont]{xeCJK}
+\xeCJKsetemboldenfactor{1}%只对随后定义的CJK字体有效
+\setCJKfamilyfont{hei}{SimHei}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{song}{SimSun}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{fs}{FangSong}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{li}{LiSu}
+\setCJKfamilyfont{xw}{STXinwei}
+\setCJKmainfont{SimSun}
+
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows 自带simsun.ttf)
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows 自带simfs.ttf)
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows 自带simkai.ttf)
+\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
+\newcommand{\xw}{\CJKfamily{xw}}        % 隶书   (Windows自带simli.ttf)
+
+% \AmSTeX\ 宏包，用来排出更加漂亮的公式。
+\usepackage{amsmath}
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{amssymb}
+% 添加字体
+\usepackage[defaultsups]{newtxtext}
+\usepackage{newtxmath}
+\usepackage{courier}
+% 图形支持宏包
+\usepackage{graphicx}
+% 插入pdf
+\usepackage{pdfpages}
+\includepdfset{fitpaper=true}
+% 更好的列表环境。
+\usepackage{enumitem}       %使用enumitem宏包,改变列表项的格式
+\usepackage{enumerate}
+\usepackage{environ}
+% 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
+\usepackage[bottom,perpage,hang]{footmisc}
+\raggedbottom
+% 脚注格式。
+\usepackage{pifont}
+% 表格控制
+\usepackage{longtable}
+\usepackage{booktabs}
+% 参考文献引用宏包
+\usepackage[sort&compress]{natbib}
+% 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
+\usepackage{hyperref}
+\hypersetup{
+  CJKbookmarks=true,
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=false,
+  plainpages=false,
+  pdfborder=0 0 0}
+% 设置 url 样式，与上下文一致
+\urlstyle{same}
+% 版芯设置
+\usepackage{geometry}
+\geometry{
+  centering,
+  text={150true mm,236true mm},
+  left=30true mm,
+  head=5true mm,
+  headsep=2true mm,
+  footskip=0true mm,
+  foot=5.2true mm
+}
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+\usepackage{fancyhdr}
+% 其他包，表格、数学符号包
+\usepackage{tabularx}
+\usepackage{varwidth}
+% 此处changepage环境用来控制索引页面的左右边距，规范中给出的示例的边距要大于正文。
+\usepackage{changepage}
+% 多栏结构在文中用begin{multicols}{2}end{multicols}
+\usepackage{multicol,multienum}
+% 允许上一个section的浮动图形出现在下一个section的开始部分,还提供\FloatBarrier命
+% 令,使所有未处理的浮动图形立即被处理
+\usepackage[below]{placeins}
+% 支持子图 %centerlast 设置最后一行是否居中
+\usepackage{subfigure}
+% 支持双语标题
+\usepackage[subfigure]{ccaption}
+% 根据我工规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
+\renewcommand\normalsize{%
+  % \@setfontsize\normalsize{12bp}{\ifhit@glue 20.50398bp \@plus 2.83465bp \@minus 0bp\else 20.50398bp\fi}%
+  \abovedisplayskip=8pt
+  \abovedisplayshortskip=8pt
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip}
+% 根据习惯定义字号。用法：\cs{hit@def@fontsize}\marg{字号名称}\marg{磅数}避免了
+% 字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+\def\hit@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+\hit@def@fontsize{dachu}{58bp}
+\hit@def@fontsize{chuhao}{42bp}
+\hit@def@fontsize{xiaochu}{36bp}
+\hit@def@fontsize{yihao}{26bp}
+\hit@def@fontsize{xiaoyi}{24bp}
+\hit@def@fontsize{erhao}{22bp}
+\hit@def@fontsize{xiaoer}{18bp}
+\hit@def@fontsize{sanhao}{16bp}
+\hit@def@fontsize{xiaosan}{15bp}
+\hit@def@fontsize{sihao}{14bp}
+\hit@def@fontsize{banxiaosi}{13bp}
+\hit@def@fontsize{xiaosi}{12bp}
+\hit@def@fontsize{dawu}{11bp}
+\hit@def@fontsize{wuhao}{10.5bp}
+\hit@def@fontsize{xiaowu}{9bp}
+\hit@def@fontsize{liuhao}{7.5bp}
+\hit@def@fontsize{xiaoliu}{6.5bp}
+\hit@def@fontsize{qihao}{5.5bp}
+\hit@def@fontsize{bahao}{5bp}
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+\setlist{nosep}
+% 允许太长的公式断行、分页等。
+\allowdisplaybreaks[4]
+\predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
+\postdisplaypenalty=0
+% 公式编号设置
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\hei}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem*{proof}{证明}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theoremseparator{}
+\newtheorem{assumption}{假设}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{exercise}{练习}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{remark}{注释}[section]
+\newtheorem{problem}{问题}[section]
+\newtheorem{conjecture}{猜想}[section]
+% 各种单位
+\usepackage{siunitx}
+\sisetup{group-minimum-digits=4, group-separator= \hspace{0.25em}}
+\sisetup{detect-weight,detect-mode,detect-family}
+% 处理数学公式中的黑斜体的宏包
+\usepackage{bm}
+% 不同于 \mathcal \mathfrak 之类的英文花体字体
+\usepackage{mathrsfs}
+% 支持彩色
+\usepackage{xcolor}
+\definecolor{colorzero}{rgb}{0, 0, 0}
+\definecolor{colorone}{rgb}{1, 0, 0}
+\definecolor{colortwo}{rgb}{0, 0, 1}
+\definecolor{colorthree}{rgb}{0, 1, 0}
+% 图形和表格的控制旋转
+\usepackage{rotating}
+% 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
+% 生成算法列表。
+\usepackage[algoruled,linesnumbered]{algorithm2e}
+% 排版源码所使用的环境。
+\usepackage{listings}
+\lstset{
+  breaklines  = true,
+  captionpos  = b,
+  tabsize     = 2,
+  numbers     = left,
+  columns     = flexible,
+  keepspaces  = true,
+  % commentstyle = \color[RGB]{0,128,0},
+  % keywordstyle = \color[RGB]{0,0,255},
+  basicstyle   = \small\ttfamily,
+  rulesepcolor = \color{red!20!green!20!blue!20},
+  showstringspaces = false,
+}
+
+% 作图
+\usepackage{tikz}
+
+% 首行缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+% 最后定义一些常见的数学公式样式。
+\newcommand{\theVector}[1]{\bm{#1}}
+\newcommand{\theMatrix}[1]{\mathbb{#1}}
+\newcommand{\theSet}[1]{\mathcal{#1}}
+\newcommand{\theDirected}[1]{{\overrightarrow{#1}}}
+\newcommand{\theUndirected}[1]{{\overline{#1}}}
+\newcommand{\theNetwork}[1]{\mathscr{#1}}
+\newcommand{\theNode}[1]{{\text{#1}}}
+\newcommand{\theDirectedEdge}[2]{{\overrightarrow{{#1}{#2}}}}
+\newcommand{\theUndirectedEdge}[2]{{\overline{{#1}{#2}}}}
+
+\graphicspath{{figures/}}
+
+\title{近世代数作业6}
+\author{cycleke}
+
+% \renewcommand{\thesection}{}
+% \renewcommand{\thesubsection}{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{课后习题}
+
+\subsection{第一题}
+\begin{proof*}
+  由于$A$，$B$为$G$的有限子群，所以$A \cap B$为$A$和$B$的子群。
+  设$H = A \cap B$，$S_l = \{a_1H, a_2H, \ldots, a_k H\}$为$H$的所有不同的左陪集之集，其中$a_i \in A, i = 1, 2, \ldots, k$。
+  所以$S_l$为$A$的一个划分，所以$|A| = k|H|$。
+
+  因为$\forall a_i, a_j(i \neq j)$，$a_iH \neq a_j H$，所以$a_i a_j^{-1} \notin H$，然而$a_i a_j^{-1} \in A$，所以$a_i a_j^{-1} \notin B$。
+
+  又因为对于$AB$，有
+  \begin{align*}
+    AB & = (\bigcup_{i = 1}^{k} a_i H) B         \\
+       & = \bigcup_{i = 1}^{k}(a_i H B)          \\
+       & = \bigcup_{i = 1}^{k}(a_i (A \cap B) B) \\
+       & = \bigcup_{i = 1}^{k}(a_i B)            \\
+  \end{align*}
+
+  所以$\forall a_i, a_j(i \neq j)$，$a_i B \neq a_j B$（否则有$a_i a_j^{-1} \in B$，矛盾）。
+  所以$a_1 B, a_2 B, \ldots, a_k B$为$AB$的一个划分，进而有$|AB| = k|B|$。
+
+  综上有，$|AB| = k|B| = \frac{|A||B|}{|H|} = \frac{|A||B|}{|A \cap B|}$。
+\end{proof*}
+
+\subsection{第二题}
+当$n = 1$时，命题并不成立，下面给出$n \geq 2$时的证明。
+
+\begin{proof*}
+  设$P = x^{-1}Hx$
+  首先证明$P \leq G$。
+  由于$e \in H$所以$e = x^{-1}ex \in x^{-1}Hx$。我们只需证明封闭性和逆元存在。
+
+  对于封闭性，有
+  $\forall p_1, p_2 \in P, \exists h_1, h_2 \in H, p_1 = x^{-1}h_1x, p_2 = x^{-1}h_2x , h_1h_2 \in H,\text{所以}p_1p_2 = (x^{-1}h_1x)(x^{-1}h_2x) = x^{-1}(h_1h_2)x \in P$。
+
+  对于逆元存在，有$\forall p \in P, \exists h \in H, p = x^{-1}hx, \text{因为}x^{-1}h^{-1}x \in P,\text{而} p(x^{-1}h^{-1}x) = e$，所以每个元素均有逆元存在。
+
+  所以$ P \leq G$，且$P_0$与$H$内自同构，$|P| = |H| = n$。
+
+  假设 $\exists x_0 \in G, s.t. x_0^{-1}Hx_0 \cap H = \{e\}$。设$P_0 = x_0^{-1}Hx_0$，
+  则$P_0$与$H$内自同构，$|P_0| = n$。
+
+  $\forall a \in H, b \in P_0$，且a，b不同时为e，则有$ab \notin H$且$ab \notin P_0$（否则$a \in P_0\text{或}b \in H \Rightarrow P \cap H \neq \{e\}$）。
+  所以$|HP_0| = |H||P_0| = n^2 = |G|$，由于$ab \in G$，所以$HP_0 = G$。由例12.7.1知$HP_0 \neq \{e\}$，矛盾。
+
+  综上所述，$\forall x \in G, x^{-1}Hx \cap H \neq \{e\}$。
+\end{proof*}
+
+\subsection{第三题}
+\begin{proof*}
+  由前面的习题知三阶子群存在。
+
+  若三阶子群不唯一，不妨设$A,B$为六阶群$G$两个不同的三阶子群。则$|AB| = \frac{9}{|A \cap B|}$。
+  由于$A$，$B$为两个不同的三阶子群，所以$|A \cap B| = 1 \Rightarrow |AB| = 9 > 6$，产生矛盾。
+
+  所以六阶群中有唯一一个三阶子群。
+\end{proof*}
+
+\subsection{第四题}
+\begin{proof*}
+  设有群$G$，$H$为$G$的一个子群且$[G:H] = 2$。则在$G$中，$H$有且只有两个左陪集$H$和$G-H$。
+
+  $\forall a \in H$，$aH = H = Ha$。
+
+  $\forall a \in G - H$，$aH = G - H = Ha$。
+
+  所以$H$为$G$的一个正规子群。
+\end{proof*}
+
+\subsection{第五题}
+\begin{proof}
+  设$A$，$B$为$G$的两个正规子群，$C = A \cap B$。显然$C$为$G$的一个子群。
+  $\forall g \in G, \forall c \in C, \text{有} gcg^{-1} \in A, gcg^{-1} \in B, \text{所以} gcg^{-1} \in C, \text{所以} gCg^{-1} \in C$。
+  所以$C$为$G$的一个正规子群。
+\end{proof}
+
+\subsection{第六题}
+\begin{proof*}
+  由于$N$是群$G$的子群，$H$是$G$的正规子群，所以$\forall h \in H, Nh = hN$，即$\forall x \in NH, \exists y \in HN, x = y$。
+  所以$NH \subseteq HN$，同理有$HN \subseteq NH$。所以$NH \leq G$。
+\end{proof*}
+
+\subsection{第七题}
+\begin{proof*}
+  由于$G$为有限交换群，拉格朗日定理的逆命题成立，所以$G$有一个二阶子群，而$G$对其的划分为一个$n$阶商群。
+\end{proof*}
+
+\subsection{第八题}
+\begin{proof*}
+  $\Rightarrow$. 由于$H \triangleleft G$，所以$H$的左陪集集族构成商群，所以其任两个左陪集的乘积还是一个左陪集。
+
+  $\Leftarrow$. $\forall a, b \in G, \exists c \in G, aHbH = cH$。因为$e \in H$，所以$ab = aebe \in cH$。
+  进而有$abH = cH$，$aHbH = abH$。所以$\forall a \in G, aHa^{-1}H = H$，所以$aHa^{-1} = aHa^{-1}e \in H$。
+  所以$H \triangleleft G$。
+\end{proof*}
+
+\subsection{第九题}
+\begin{proof*}
+  不妨设$H = {e, a}, a^2 = e\forall x \in G, xHx^{-1} = H$。
+  因为$xex^{-1} = e$，所以$xax^{-1} = a$。所以$e, a \in C, H \subseteq C$。
+\end{proof*}
+
+\subsection{第十题}
+\begin{proof*}
+  设G为群，$\forall H \leq G, G^{(1)} \subseteq H$，显然$G^{(1)} \leq H$。
+  $\forall x \in G, h \in H, xhx^{-1}h^{-1} \in G^{(1)} \leq H$。进而有$xhx^{-1} = (xhx^{-1}h^{-1})h \in H$，
+  所以$xHx^{-1} \leq H$，所以$H \triangleleft G$。
+\end{proof*}
+
+\subsection{第十一题}
+\begin{proof*}
+  先证$AB \subseteq G$，显然。
+
+  再证$G \subseteq AB$。$\forall g \in G, |A^{-1}g| = |A|$，所以$|A^{-1}g| + |B| = |A| + |B| > |G|$，
+  所以$A^{-1}g \cap B \neq \emptyset$.于是$\exists a \in A, b \in B, s.t. a^{-1}g = b, g = ab \in AB$，
+  所以$G \subseteq AB$。
+
+  综上所述，$AB = G$。
+\end{proof*}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

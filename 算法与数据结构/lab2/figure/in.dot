@@ -1,0 +1,23 @@
+digraph {
+  init[label="u <- root\ninit stack"];
+  judge0[label="is u null and stack empty?"];
+  judge1[label="is u null?"];
+  judge2[label="is stack empty?"];
+  print[label="print the value of u"];
+  lson[label="u <- u.lson"];
+  rson[label="u <- u.rson"];
+  push[label="push u into stack"];
+  pop[label="u <- stack.top and pop the top of stack"];
+  { rank=max; end; }
+
+  init -> judge0;
+  judge0 -> end[label="Yes"];
+  judge0 -> judge1[label="No"];
+  judge1 -> judge2[label="Yes"];
+  judge1 -> push[label="No"];
+  push -> lson -> judge1;
+
+  judge2 -> judge0[label="Yes"];
+  judge2 -> pop[label="No"];
+  pop -> print -> rson -> judge0;
+}

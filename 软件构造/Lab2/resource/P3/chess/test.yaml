@@ -1,0 +1,79 @@
+player1:
+  name: "alice"
+  pieces:
+  - name: "King"
+    x: 4
+    y: 0
+  - name: "Queen"
+    x: 3
+    y: 0
+  - name: "Rook"
+    x: 0
+    y: 0
+  - name: "Rook"
+    x: 7
+    y: 0
+  - name: "Bishop"
+    x: 2
+    y: 0
+  - name: "Bishop"
+    x: 5
+    y: 0
+  - name: "Knight"
+    x: 1
+    y: 0
+  - name: "Knight"
+    x: 6
+    y: 0
+
+player2:
+  name: "bob"
+  pieces:
+  - name: "King"
+    x: 4
+    y: 4
+  - name: "Queen"
+    x: 3
+    y: 7
+  - name: "Rook"
+    x: 0
+    y: 7
+  - name: "Rook"
+    x: 7
+    y: 7
+  - name: "Bishop"
+    x: 2
+    y: 7
+  - name: "Bishop"
+    x: 5
+    y: 7
+  - name: "Knight"
+    x: 1
+    y: 7
+  - name: "Knight"
+    x: 6
+    y: 7
+  - name: "Pawn"
+    x: 0
+    y: 6
+  - name: "Pawn"
+    x: 1
+    y: 6
+  - name: "Pawn"
+    x: 2
+    y: 6
+  - name: "Pawn"
+    x: 3
+    y: 6
+  - name: "Pawn"
+    x: 4
+    y: 6
+  - name: "Pawn"
+    x: 5
+    y: 6
+  - name: "Pawn"
+    x: 6
+    y: 6
+  - name: "Pawn"
+    x: 7
+    y: 6

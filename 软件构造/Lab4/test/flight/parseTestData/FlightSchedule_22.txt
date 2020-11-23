@@ -1,0 +1,13 @@
+Flight:CX0233,2020-01-01
+{
+DepartureAirport:Tianjin
+ArrivalAirport:Sanya
+DepatureTime:2020-01-01 03:15
+ArrivalTime:2020-01-01 05:25
+Plane:B6863
+{
+Type:A319
+Seats:140
+Age:8.5
+}
+}
