@@ -1,0 +1,107 @@
+Alice send message 0 to ('', 19269).
+Message: Alice
+Bob send message 0 to ('', 19267).
+Message: Bob0 
+Bob send ack message 0 to ('', 19268).
+Alice receive ACK message ACK 0
+Alice send message 1 to ('', 19269).
+Message: EOF
+Alice send ack message 0 to ('', 19270).
+Bob receive ACK message ACK 0
+Bob send message 1 to ('', 19267).
+Message: Bob1 
+Bob send ack message 1 to ('', 19268).
+
+#############
+Finally Bob recevied message:
+Alice
+#############
+
+Alice receive ACK message ACK 1
+Alice send ack message 1 to ('', 19270).
+Bob receive ACK message ACK 1
+Bob send message 2 to ('', 19267).
+Message: Bob2 
+Alice send ack message 2 to ('', 19270).
+Bob receive ACK message ACK 2
+Bob send message 3 to ('', 19267).
+Message: Bob3 
+Sender Alice end.
+Alice lose packet 3.
+Bob send message 4 to ('', 19267).
+Message: Bob4 
+Alice send ack message 4 to ('', 19270).
+Bob receive ACK message ACK 4
+Bob send message 5 to ('', 19267).
+Message: Bob5 
+Alice send ack message 5 to ('', 19270).
+Bob receive ACK message ACK 5
+Bob send message 6 to ('', 19267).
+Message: Bob6 
+Alice send ack message 6 to ('', 19270).
+Bob receive ACK message ACK 6
+Bob send message 7 to ('', 19267).
+Message: Bob7 
+Alice send ack message 7 to ('', 19270).
+Bob receive ACK message ACK 7
+Bob send message 8 to ('', 19267).
+Message: Bob8 
+Alice send ack message 8 to ('', 19270).
+Bob receive ACK message ACK 8
+Bob timeout on pkt 3.
+Bob resend message 3 to ('', 19267).
+Message: MSG 3 Bob3 
+Alice send ack message 3 to ('', 19270).
+Bob lose ack packet 3.
+Bob timeout on pkt 3.
+Bob resend message 3 to ('', 19267).
+Message: MSG 3 Bob3 
+Alice lose packet 3.
+Bob timeout on pkt 3.
+Bob resend message 3 to ('', 19267).
+Message: MSG 3 Bob3 
+Alice have received packet 3, resend ACK message ACK 3 to ('', 19270).
+Bob receive ACK message ACK 3
+Bob send message 9 to ('', 19267).
+Message: Bob9 
+Alice send ack message 9 to ('', 19270).
+Bob lose ack packet 9.
+Bob send message 10 to ('', 19267).
+Message: EOF
+Alice send ack message 10 to ('', 19270).
+
+#############
+Finally Alice recevied message:
+Bob0 Bob1 Bob2 Bob3 Bob4 Bob5 Bob6 Bob7 Bob8 Bob9 
+#############
+
+Bob lose ack packet 10.
+Bob timeout on pkt 9.
+Bob resend message 9 to ('', 19267).
+Message: MSG 9 Bob9 
+Bob timeout on pkt 10.
+Bob resend message 10 to ('', 19267).
+Message: MSG 10 EOF
+Alice have received packet 9, resend ACK message ACK 9 to ('', 19270).
+Bob receive ACK message ACK 9
+Alice lose packet 10.
+Bob timeout on pkt 10.
+Bob resend message 10 to ('', 19267).
+Message: MSG 10 EOF
+Alice have received packet 10, resend ACK message ACK 10 to ('', 19270).
+Bob lose ack packet 10.
+Bob timeout on pkt 10.
+Bob resend message 10 to ('', 19267).
+Message: MSG 10 EOF
+Alice lose packet 10.
+Bob timeout on pkt 10.
+Bob resend message 10 to ('', 19267).
+Message: MSG 10 EOF
+Alice have received packet 10, resend ACK message ACK 10 to ('', 19270).
+Bob lose ack packet 10.
+Bob timeout on pkt 10.
+Bob resend message 10 to ('', 19267).
+Message: MSG 10 EOF
+Alice have received packet 10, resend ACK message ACK 10 to ('', 19270).
+Bob receive ACK message ACK 10
+Sender Bob end.

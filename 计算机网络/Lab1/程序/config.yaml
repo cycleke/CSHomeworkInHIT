@@ -1,0 +1,8 @@
+ban_user:
+  # - "127.0.0.1"
+ban_web:
+  - "ban.com"
+  - "\\S*google\\S*"
+  - "today.hit.edu.cn"
+fishing:
+  "fishing.com": "www.hit.edu.cn"
