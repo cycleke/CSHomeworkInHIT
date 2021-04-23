@@ -1,0 +1,82 @@
+(TeX-add-style-hook
+ "report"
+ (lambda ()
+   (TeX-add-to-alist 'LaTeX-provided-class-options
+                     '(("report" "12pt" "onecolumn")))
+   (TeX-add-to-alist 'LaTeX-provided-package-options
+                     '(("xeCJK" "BoldFont" "SlantFont") ("ntheorem" "amsmath" "thmmarks" "hyperref") ("newtxtext" "defaultsups") ("footmisc" "bottom" "perpage" "hang") ("natbib" "sort&compress" "numbers") ("placeins" "below") ("ccaption" "subfigure") ("xcolor" "table") ("algorithm2e" "algoruled" "linesnumbered")))
+   (TeX-run-style-hooks
+    "latex2e"
+    "rep12"
+    "xeCJK"
+    "amsmath"
+    "ntheorem"
+    "amssymb"
+    "newtxtext"
+    "newtxmath"
+    "courier"
+    "graphicx"
+    "pdfpages"
+    "enumitem"
+    "environ"
+    "footmisc"
+    "pifont"
+    "longtable"
+    "booktabs"
+    "natbib"
+    "hyperref"
+    "geometry"
+    "fancyhdr"
+    "tabularx"
+    "varwidth"
+    "changepage"
+    "multicol"
+    "multienum"
+    "placeins"
+    "subfigure"
+    "ccaption"
+    "siunitx"
+    "bm"
+    "mathrsfs"
+    "xcolor"
+    "rotating"
+    "algorithm2e"
+    "listings"
+    "tikz"
+    "indentfirst"
+    "float"
+    "diagbox"
+    "setspace"
+    "zhnumber"
+    "titlesec")
+   (TeX-add-symbols
+    '("M" 1)
+    "hei"
+    "song"
+    "fs"
+    "kai"
+    "li"
+    "xw"
+    "headrule"
+    "headrulewidth")
+   (LaTeX-add-labels
+    "fig:ER-fig"
+    "fig:init"
+    "fig:publisher-list"
+    "fig:input-keyword"
+    "fig:comment-list")
+   (LaTeX-add-environments
+    "assumption"
+    "definition"
+    "proposition"
+    "lemma"
+    "theorem"
+    "axiom"
+    "corollary"
+    "exercise"
+    "example"
+    "remark"
+    "problem"
+    "conjecture"))
+ :latex)
+
