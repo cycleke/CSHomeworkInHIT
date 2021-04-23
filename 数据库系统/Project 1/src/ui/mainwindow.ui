@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainwindow</class>
+ <widget class="QMainWindow" name="mainwindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>773</width>
+    <height>382</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>.SF UI Display Condensed</family>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>书评系统</string>
+  </property>
+  <widget class="QWidget" name="central_widget">
+   <layout class="QVBoxLayout" name="central_layout">
+    <item>
+     <widget class="QTabWidget" name="tab_widget">
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="publisher_tab">
+       <attribute name="title">
+        <string>出版社</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="publisher_layout">
+        <item>
+         <layout class="QHBoxLayout" name="publisher_input_layout">
+          <item>
+           <widget class="QPushButton" name="publisher_add_button">
+            <property name="text">
+             <string>添加出版社</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="publisher_search_id_button">
+            <property name="text">
+             <string>按 ID 搜索出版社</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="publisher_search_keyword_button">
+            <property name="text">
+             <string>按关键字搜索出版社</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="publisher_list_button">
+            <property name="text">
+             <string>列出所有</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="publisher_table"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="author_tab">
+       <attribute name="title">
+        <string>作者</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="author_layout">
+        <item>
+         <layout class="QHBoxLayout" name="author_input_layout">
+          <item>
+           <widget class="QPushButton" name="author_add_button">
+            <property name="text">
+             <string>添加作者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="author_search_id_button">
+            <property name="text">
+             <string>按 ID 搜索作者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="author_search_keyword_button">
+            <property name="text">
+             <string>按关键字搜索作者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="author_search_books_button">
+            <property name="text">
+             <string>搜索作者书籍</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="author_list_button">
+            <property name="text">
+             <string>列出所有</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="author_table"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="book_tab">
+       <attribute name="title">
+        <string>书籍</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="book_layout">
+        <item>
+         <layout class="QHBoxLayout" name="book_input_layout">
+          <item>
+           <widget class="QPushButton" name="book_add_button">
+            <property name="text">
+             <string>添加书籍</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="book_search_id_button">
+            <property name="text">
+             <string>按 ID 搜索书籍</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="book_search_isbn_button">
+            <property name="text">
+             <string>按 ISBN 搜索书籍</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="book_search_keyword_button">
+            <property name="text">
+             <string>按关键字搜索书籍</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="book_list_button">
+            <property name="text">
+             <string>列出所有</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="book_table"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="reader_tab">
+       <attribute name="title">
+        <string>读者</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="reader_layout">
+        <item>
+         <layout class="QHBoxLayout" name="reader_input_layout">
+          <item>
+           <widget class="QPushButton" name="reader_add_button">
+            <property name="text">
+             <string>添加读者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="reader_search_id_button">
+            <property name="text">
+             <string>按 ID 搜索读者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="reader_search_keyword_button">
+            <property name="text">
+             <string>按关键字搜索读者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="reader_list_button">
+            <property name="text">
+             <string>列出所有</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="reader_table"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="comment_tab">
+       <attribute name="title">
+        <string>评论</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="comment_layout">
+        <item>
+         <layout class="QHBoxLayout" name="comment_input_layout">
+          <item>
+           <widget class="QPushButton" name="comment_add_button">
+            <property name="text">
+             <string>添加评论</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="comment_search_id_button">
+            <property name="text">
+             <string>按 ID 搜索评论</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="comment_search_reader_button">
+            <property name="text">
+             <string>按读者搜索评论</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="comment_search_book_button">
+            <property name="text">
+             <string>按书籍搜索评论</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="comment_search_keyword_button">
+            <property name="text">
+             <string>按关键字搜索评论</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="comment_list_button">
+            <property name="text">
+             <string>列出所有</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="comment_table"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
