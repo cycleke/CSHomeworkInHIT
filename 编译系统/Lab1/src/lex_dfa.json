@@ -1,0 +1,277 @@
+{
+  "start": "S",
+  "status": {
+    "idn": "IDN",
+    "dec": "CONST_INTEGER",
+    "hex": "CONST_INTEGER",
+    "oct": "CONST_INTEGER",
+    "bin": "CONST_INTEGER",
+    "zero": "CONST_INTEGER",
+    "dot-float": "CONST_FLOAT",
+    "sci-exp": "CONST_FLOAT",
+    "char": "CONST_CHARACTER",
+    "string": "CONST_STRING",
+    "//": "COMMENT",
+    "/**/": "COMMENT",
+    "+": "PLUS",
+    "-": "MINUS",
+    "*": "STAR",
+    "/": "SLASH",
+    "%": "PERCENT",
+    "++": "INC",
+    "--": "DEC",
+    ">": "GT",
+    ">=": "GE",
+    "==": "EQ",
+    "<=": "LE",
+    "<": "LT",
+    "!=": "NE",
+    "&&": "AND",
+    "||": "OR",
+    "!": "NOT",
+    "&": "AMPERSAND",
+    "|": "VERT_LINE",
+    "~": "TILDE",
+    "^": "CARET",
+    "<<": "LSHIFT",
+    ">>": "RSHIFT",
+    "=": "ASSIGN",
+    "+=": "ADD_ASSIGN",
+    "-=": "SUB_ASSIGN",
+    "*=": "MUL_ASSIGN",
+    "/=": "DIV_ASSIGN",
+    "%=": "MOD_ASSIGN",
+    "|=": "OR_ASSIGN",
+    "&=": "AND_ASSIGN",
+    "^=": "XOR_ASSIGN",
+    "<<=": "LSHIFT_ASSIGN",
+    ">>=": "RSHIFT_ASSIGN",
+    ";": "SEMICOLON",
+    ",": "COMMA",
+    ".": "DOT",
+    "->": "ARROW",
+    "?": "QUESTION",
+    "{": "LEFT_BRACE",
+    "(": "LEFT_PAREN",
+    "[": "LEFT_SQUARE",
+    "}": "RIGHT_BRACE",
+    ")": "RIGHT_PAREN",
+    "]": "RIGHT_SQUARE"
+  },
+  "accept": [
+    "idn",
+    "dec",
+    "hex",
+    "oct",
+    "bin",
+    "zero",
+    "dot-float",
+    "sci-exp",
+    "char",
+    "string",
+    "//",
+    "/**/",
+    "+",
+    "-",
+    "*",
+    "/",
+    "%",
+    "++",
+    "--",
+    ">",
+    ">=",
+    "==",
+    "<=",
+    "<",
+    "!=",
+    "&&",
+    "||",
+    "!",
+    "&",
+    "|",
+    "~",
+    "^",
+    "<<",
+    ">>",
+    "=",
+    "+=",
+    "-=",
+    "*=",
+    "/=",
+    "%=",
+    "|=",
+    "&=",
+    "^=",
+    "<<=",
+    ">>=",
+    ";",
+    ",",
+    ".",
+    "->",
+    "?",
+    "{",
+    "(",
+    "[",
+    "}",
+    ")",
+    "]"
+  ],
+  "trans": {
+    "S": {
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_": "idn",
+      "0": "zero",
+      "123456789": "dec",
+      ".": ".",
+      "+": "+",
+      "-": "-",
+      "*": "*",
+      "/": "/",
+      "%": "%",
+      ">": ">",
+      "<": "<",
+      "!": "!",
+      "&": "&",
+      "|": "|",
+      "~": "~",
+      "^": "^",
+      "=": "=",
+      ";": ";",
+      ",": ",",
+      "?": "?",
+      "{": "{",
+      "[": "[",
+      "(": "(",
+      "}": "}",
+      "]": "]",
+      ")": ")",
+      "\"": "\"",
+      "'": "'",
+      " \t\n\r\f": "S"
+    },
+    "idn": {
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789": "idn"
+    },
+    "dec": {
+      "0123456789": "dec",
+      ".": ".",
+      "eE": "sci"
+    },
+    "hex": {
+      "abcdefABCDEF0123456789": "hex"
+    },
+    "oct": {
+      "01234567": "oct"
+    },
+    "bin": {
+      "01": "bin"
+    },
+    "zero": {
+      "xX": "hex",
+      "bB": "bin",
+      "01234567": "oct",
+      ".": ".",
+      "eE": "sci"
+    },
+    ".": {
+      "0123456789": "dot-float"
+    },
+    "dot-float": {
+      "0123456789": "dot-float",
+      "eE": "sci"
+    },
+    "sci": {
+      "+-": "signed-exp",
+      "0123456789": "sci-exp"
+    },
+    "signed-exp": {
+      "0123456789": "sci-exp"
+    },
+    "sci-exp": {
+      "0123456789": "sci-exp"
+    },
+    "'": {
+      "\\": "c\\",
+      "`1234567890-=~!@#$%^&*()_+[]{}|;:\",./<>? ": "open-char",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "open-char"
+    },
+    "c\\": {
+      "0tnrf\\\"'": "open-char"
+    },
+    "open-char": {
+      "'": "char"
+    },
+    "\"": {
+      "\"": "string",
+      "`1234567890-=~!@#$%^&*()_+[]{}|;:\\,./<>? ": "\"",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "\""
+    },
+    "<": {
+      "<": "<<",
+      "=": "<="
+    },
+    ">": {
+      ">": ">>",
+      "=": ">="
+    },
+    "+": {
+      "+": "++",
+      "=": "+="
+    },
+    "-": {
+      "-": "--",
+      "=": "-=",
+      ">": "->"
+    },
+    "*": {
+      "=": "*="
+    },
+    "/": {
+      "/": "//",
+      "*": "/*"
+    },
+    "//": {
+      "`1234567890-=~!@#$%^&*()_+[]{}|;:\",./<>? \\": "//",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "//",
+      " \t\r\f": "//"
+    },
+    "/*": {
+      "`1234567890-=~!@#$%^&()_+[]{}|;:\",./<>? \\": "/*",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "/*",
+      " \t\n\r\f": "/*",
+      "*": "/**"
+    },
+    "/**": {
+      "`1234567890-=~!@#$%^&()_+[]{}|;:\",.<>? \\": "/*",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "/*",
+      " \t\n\r\f": "/*",
+      "*": "/**",
+      "/": "/**/"
+    },
+    "=": {
+      "=": "=="
+    },
+    "!": {
+      "=": "!="
+    },
+    "%": {
+      "=": "%="
+    },
+    "|": {
+      "=": "|=",
+      "|": "||"
+    },
+    "&": {
+      "=": "&=",
+      "&": "&&"
+    },
+    "^": {
+      "=": "^="
+    },
+    "<<": {
+      "=": "<<="
+    },
+    ">>": {
+      "=": ">>="
+    }
+  }
+}
