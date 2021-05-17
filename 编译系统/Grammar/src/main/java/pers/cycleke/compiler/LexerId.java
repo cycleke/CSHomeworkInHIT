@@ -1,0 +1,103 @@
+package pers.cycleke.compiler;
+
+import pers.cycleke.compiler.Grammar.Lexer;
+
+public class LexerId {
+  public static int getLexerId(String type) {
+    switch (type) {
+    case "IDN":
+      return Lexer.IDN;
+    case "EOF":
+      return Lexer.EOF;
+    case "CONST_INTEGER":
+      return Lexer.CONST_INTEGER;
+    case "CONST_FLOAT":
+      return Lexer.CONST_FLOAT;
+    case "CONST_STRING":
+      return Lexer.CONST_STRING;
+    case "CONST_CHARACTER":
+      return Lexer.CONST_CHARACTER;
+    case "PLUS":
+      return Lexer.PLUS;
+    case "MINUS":
+      return Lexer.MINUS;
+    case "STAR":
+      return Lexer.STAR;
+    case "SLASH":
+      return Lexer.SLASH;
+    case "PERCENT":
+      return Lexer.PERCENT;
+    case "GT":
+      return Lexer.GT;
+    case "GE":
+      return Lexer.GE;
+    case "EQ":
+      return Lexer.EQ;
+    case "LE":
+      return Lexer.LE;
+    case "LT":
+      return Lexer.LT;
+    case "NE":
+      return Lexer.NE;
+    case "AND":
+      return Lexer.AND;
+    case "OR":
+      return Lexer.OR;
+    case "AMPERSAND":
+      return Lexer.AMPERSAND;
+    case "VERT_LINE":
+      return Lexer.VERT_LINE;
+    case "CARET":
+      return Lexer.CARET;
+    case "ASSIGN":
+      return Lexer.ASSIGN;
+    case "SEMICOLON":
+      return Lexer.SEMICOLON;
+    case "COMMA":
+      return Lexer.COMMA;
+    case "DOT":
+      return Lexer.DOT;
+    case "LEFT_BRACE":
+      return Lexer.LEFT_BRACE;
+    case "LEFT_PAREN":
+      return Lexer.LEFT_PAREN;
+    case "LEFT_SQUARE":
+      return Lexer.LEFT_SQUARE;
+    case "RIGHT_BRACE":
+      return Lexer.RIGHT_BRACE;
+    case "RIGHT_PAREN":
+      return Lexer.RIGHT_PAREN;
+    case "RIGHT_SQUARE":
+      return Lexer.RIGHT_SQUARE;
+    case "CHAR":
+      return Lexer.CHAR;
+    case "SHORT":
+      return Lexer.SHORT;
+    case "INT":
+      return Lexer.INT;
+    case "LONG":
+      return Lexer.LONG;
+    case "FLOAT":
+      return Lexer.FLOAT;
+    case "DOUBLE":
+      return Lexer.DOUBLE;
+    case "VOID":
+      return Lexer.VOID;
+    case "SIGNED":
+      return Lexer.SIGNED;
+    case "UNSIGNED":
+      return Lexer.UNSIGNED;
+    case "IF":
+      return Lexer.IF;
+    case "ELSE":
+      return Lexer.ELSE;
+    case "WHILE":
+      return Lexer.WHILE;
+    case "RETURN":
+      return Lexer.RETURN;
+    case "STRUCT":
+      return Lexer.STRUCT;
+    }
+    return -1;
+  }
+}
