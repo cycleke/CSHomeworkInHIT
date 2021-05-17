@@ -1,0 +1,26 @@
+digraph {
+  node[shape=box]
+  start[label="开始",shape=ellipse]
+  load[label="载入自动机的状态表和转移表"]
+  init[label="初始化栈，设定状态为初始状态"]
+  new_token[label="是否有新 TOKEN",shape=diamond]
+  label_type[label="判断当前状态",shape=diamond]
+  init_state[label="根据 GOTO 表和 ACTION 表进行转移"]
+  error_state[label="报错，提示错误信息"]
+  reduce_state[label="根据 GOTO 表和 ACTION 表进行归约"]
+  print_state[label="打印抽象语法树"]
+  end[label="结束",shape=ellipse]
+
+  start -> load -> init -> new_token;
+  new_token -> label_type[label="是"];
+  new_token -> print_state[label="否"];
+  print_state -> end;
+
+  label_type -> error_state[label="错误状态"];
+  label_type -> reduce_state[label="归约状态"];
+  label_type -> init_state[label="初始状态"];
+
+  init_state -> new_token;
+  error_state -> end;
+  reduce_state -> label_type;
+}
