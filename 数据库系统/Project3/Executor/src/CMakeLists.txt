@@ -1,0 +1,61 @@
+cmake_minimum_required(VERSION 3.16)
+project(src)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(.)
+include_directories(exceptions)
+
+add_executable(src
+        exceptions/bad_buffer_exception.cpp
+        exceptions/bad_buffer_exception.h
+        exceptions/badgerdb_exception.cpp
+        exceptions/badgerdb_exception.h
+        exceptions/buffer_exceeded_exception.cpp
+        exceptions/buffer_exceeded_exception.h
+        exceptions/file_exists_exception.cpp
+        exceptions/file_exists_exception.h
+        exceptions/file_not_found_exception.cpp
+        exceptions/file_not_found_exception.h
+        exceptions/file_open_exception.cpp
+        exceptions/file_open_exception.h
+        exceptions/hash_already_present_exception.cpp
+        exceptions/hash_already_present_exception.h
+        exceptions/hash_not_found_exception.cpp
+        exceptions/hash_not_found_exception.h
+        exceptions/hash_table_exception.cpp
+        exceptions/hash_table_exception.h
+        exceptions/insufficient_space_exception.cpp
+        exceptions/insufficient_space_exception.h
+        exceptions/invalid_page_exception.cpp
+        exceptions/invalid_page_exception.h
+        exceptions/invalid_record_exception.cpp
+        exceptions/invalid_record_exception.h
+        exceptions/invalid_slot_exception.cpp
+        exceptions/invalid_slot_exception.h
+        exceptions/page_not_pinned_exception.cpp
+        exceptions/page_not_pinned_exception.h
+        exceptions/page_pinned_exception.cpp
+        exceptions/page_pinned_exception.h
+        exceptions/slot_in_use_exception.cpp
+        exceptions/slot_in_use_exception.h
+        buffer.cpp
+        buffer.h
+        bufHashTbl.cpp
+        bufHashTbl.h
+        catalog.h
+        executor.cpp
+        executor.h
+        file.cpp
+        file.h
+        file_iterator.h
+        main.cpp
+        main.hpp
+        page.cpp
+        page.h
+        page_iterator.h
+        schema.cpp
+        schema.h
+        storage.cpp
+        storage.h
+        types.h)
